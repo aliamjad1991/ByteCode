@@ -1,35 +1,2215 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#071d55">
-  <title>ByteCode | Learn · Practise · Level Up</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0B1221" />
+  <title>ByteAcademy | Learn · Practise · Level Up — GATE CSE &amp; BPSC CSE</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans (Display), Inter (Body), JetBrains Mono (Code/Metrics) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            display: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            navy: {
+              950: '#0B1221',
+              900: '#0F172A',
+              800: '#1E293B',
+            },
+            brand: {
+              50: '#EEF2FF',
+              100: '#E0E7FF',
+              500: '#6366F1',
+              600: '#4F46E5',
+              700: '#4338CA',
+            }
+          },
+          boxShadow: {
+            'card': '0 1px 3px rgba(15, 23, 42, 0.04), 0 6px 16px -4px rgba(15, 23, 42, 0.06)',
+            'card-hover': '0 12px 28px -6px rgba(15, 23, 42, 0.12), 0 4px 10px -2px rgba(79, 70, 229, 0.08)',
+            'dropdown': '0 20px 48px -12px rgba(11, 18, 33, 0.18), 0 4px 12px -2px rgba(11, 18, 33, 0.06)',
+          }
+        }
+      }
+    };
+  </script>
+
   <style>
-    :root{--navy:#071d55;--purple:#5423e9;--blue:#087be0;--ink:#101631;--muted:#64708a;--line:#e6eaf3;--shadow:0 5px 18px #10275a12}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:var(--ink);background:#fbfcff}a{text-decoration:none;color:inherit}button{font:inherit;cursor:pointer}.wrap{width:min(1200px,100%);margin:auto}
-    header{height:68px;background:#fff;position:sticky;top:0;z-index:30;border-bottom:1px solid #e9edf5}.head{height:100%;display:flex;align-items:center;padding:0 24px;gap:22px}.brand{display:flex;align-items:center;gap:10px;color:#0b286f;font-weight:900}.brand-mark{width:42px;height:34px;border:3px solid #0b347c;border-radius:6px;display:grid;place-items:center;font-size:15px}.brand-name{font-size:23px;letter-spacing:-1px}.brand-tag{display:block;font-size:9px;letter-spacing:.5px;font-weight:850;color:#465174;margin-top:3px}nav{display:flex;align-items:center;justify-content:space-between;gap:5px;flex:1}nav a{font-size:12px;font-weight:800;padding:10px;border-radius:9px}nav a:hover{background:#f1edff;color:var(--purple)}.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:9px;height:39px;padding:0 15px;font-size:12px;font-weight:850}.outline{border:1.5px solid var(--purple);color:#32256b;background:white}.primary{border:0;color:white;background:linear-gradient(110deg,#5520e9,#762df0)}.menu{display:none;border:0;background:#f1edff;color:var(--purple);border-radius:8px;padding:8px}
-    .hero{padding:42px 6%;background:linear-gradient(110deg,#071f59,#0c347b);color:white;position:relative;overflow:hidden}.hero:after{content:"</>";position:absolute;right:9%;top:12%;font-size:150px;font-weight:900;color:#ffffff12}.eyebrow{font-size:11px;font-weight:850;letter-spacing:1px;text-transform:uppercase;color:#ffd846}.hero h1{font-size:26px;margin:8px 0}.hero h1 strong{display:block;font-size:clamp(34px,5vw,52px);color:#ffd43e}.hero-points{display:flex;gap:18px;flex-wrap:wrap;margin:15px 0;font-weight:750}.hero-points span:before{content:"✓";margin-right:6px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap}.yellow{background:#ffd33d;color:#101d50}.shortcuts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:18px 24px}.shortcut{border-radius:12px;padding:16px;background:#eaf5ff;font-size:13px;font-weight:850}.shortcut:nth-child(2){background:#fff7e8}.shortcut:nth-child(3){background:#eafaf0}.shortcut:nth-child(4){background:#fff0f7}.shortcut:nth-child(5){background:#f1efff}.shortcut:nth-child(6){background:#e6fbfa}.shortcut small{display:block;color:#465174;font-size:10px;font-weight:500;margin-top:4px}
-    .section{padding:18px 24px}.section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.section h2{margin:0;color:#10175e;font-size:21px}.view{font-size:12px;font-weight:850;color:var(--purple)}.exam-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.exam{min-height:130px;border-radius:13px;padding:18px;color:white;background:linear-gradient(110deg,#0576d2,#28a8f4);box-shadow:var(--shadow)}.exam:nth-child(2){background:linear-gradient(110deg,#7828c6,#a45bea)}.exam:nth-child(3){background:linear-gradient(110deg,#079a56,#13c985)}.exam:nth-child(4){background:linear-gradient(110deg,#e45c08,#ffa02d)}.exam h3{margin:0 0 5px;font-size:19px}.exam p{font-size:11px;margin:0 0 15px}.exam a{display:inline-block;background:#ffffffeb;color:#163b76;border-radius:7px;padding:7px 9px;margin:2px;font-size:10px;font-weight:850}.subject-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.subject{height:76px;background:white;border:1px solid var(--line);border-radius:11px;display:grid;place-items:center;font-size:13px;font-weight:850;box-shadow:var(--shadow)}.subject:hover{color:var(--purple)}.results{margin:10px 24px;padding:22px;border-radius:15px;background:linear-gradient(105deg,#3612a6,#6023d7);color:white;display:grid;grid-template-columns:repeat(4,1fr);text-align:center;gap:10px}.results h2{grid-column:1/-1;color:white;margin:0}.result b{display:block;color:#ffdc38;font-size:28px}.result small{font-weight:750}.panels{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.panel{border:1px solid var(--line);border-radius:13px;background:white;padding:16px;box-shadow:var(--shadow)}.panel h3{margin:0 0 10px;color:#13175d;font-size:15px}.panel p,.panel li{font-size:11px;color:#59647c;line-height:1.55}.panel ul{padding-left:18px}.cta{margin:10px 24px 24px;padding:22px;border-radius:14px;background:linear-gradient(105deg,#0a2869,#5422d8);color:white;display:flex;align-items:center;justify-content:space-between;gap:14px}.cta h2{color:white;margin:0 0 5px}.cta p{margin:0;font-size:12px;color:#e4e9ff}footer{background:#061a49;color:white;padding:24px;text-align:center;font-size:11px}.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,15px);opacity:0;transition:.2s;background:#101b4c;color:white;padding:11px 16px;border-radius:8px;font-size:12px;z-index:90}.toast.show{opacity:1;transform:translate(-50%,0)}.modal-bg{display:none;position:fixed;inset:0;background:#07143eaa;z-index:80;align-items:center;justify-content:center;padding:18px}.modal-bg.show{display:flex}.modal{background:white;width:min(410px,100%);border-radius:16px;padding:25px;position:relative}.modal h3{margin:0 0 6px;color:#11175d}.modal p{font-size:12px;color:var(--muted)}.modal input{width:100%;padding:11px;border:1px solid #dce2ef;border-radius:8px;margin:6px 0}.modal .submit{width:100%;padding:12px;background:var(--purple);color:white;border:0;border-radius:8px;font-weight:850;margin-top:8px}.close{position:absolute;right:12px;top:8px;border:0;background:none;font-size:22px}
-    @media(max-width:850px){.head{padding:0 13px}.menu{display:block}nav#nav{display:none}.brand{margin-right:auto}.head .outline{display:inline-flex}.shortcuts{grid-template-columns:repeat(2,1fr);padding:12px}.exam-grid{grid-template-columns:repeat(2,1fr)}.subject-grid{grid-template-columns:repeat(3,1fr)}.panels{grid-template-columns:1fr}.section{padding:14px}.results,.cta{margin-left:14px;margin-right:14px}}
-    @media(max-width:480px){.hero{padding:30px 18px}.hero h1{font-size:20px}.hero h1 strong{font-size:31px}.hero-points{gap:9px;font-size:12px}.shortcuts{gap:8px}.exam-grid{grid-template-columns:1fr}.subject-grid{grid-template-columns:repeat(2,1fr)}.results{grid-template-columns:repeat(2,1fr);padding:15px}.results h2{grid-column:1/-1}.cta{align-items:flex-start;flex-direction:column}.section-head{align-items:flex-start;gap:8px}.section h2{font-size:18px}}
+    /* Minimal base enhancements for font rendering, subtle mesh background, and smooth animations */
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: #0F172A;
+      background-color: #F8FAFC;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .hero-mesh {
+      background-color: #0B1221;
+      background-image:
+        radial-gradient(circle at 15% 20%, rgba(79, 70, 229, 0.28) 0%, transparent 45%),
+        radial-gradient(circle at 85% 30%, rgba(99, 102, 241, 0.22) 0%, transparent 45%),
+        radial-gradient(circle at 50% 100%, rgba(16, 185, 129, 0.10) 0%, transparent 50%),
+        radial-gradient(rgba(148, 163, 184, 0.14) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 26px 26px;
+    }
+    .results-mesh {
+      background-color: #0F172A;
+      background-image:
+        radial-gradient(circle at 0% 0%, rgba(79, 70, 229, 0.35) 0%, transparent 50%),
+        radial-gradient(circle at 100% 100%, rgba(99, 102, 241, 0.28) 0%, transparent 50%),
+        radial-gradient(rgba(148, 163, 184, 0.12) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 24px 24px;
+    }
+    @keyframes fadeSlideDown {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-dropdown {
+      animation: fadeSlideDown 0.16s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    /* Custom FAQ chevron rotation */
+    details[open] .faq-chevron {
+      transform: rotate(180deg);
+      color: #4F46E5;
+    }
+    details > summary {
+      list-style: none;
+    }
+    details > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    /* Mobile drawer submenu panels */
+    .drawer-submenu > a {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.65rem 0.75rem;
+      border: 1px solid #E2E8F0;
+      border-radius: 0.65rem;
+      background: #FFFFFF;
+      color: #475569;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      line-height: 1.35;
+      transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease, transform 150ms ease;
+    }
+    .drawer-submenu > a:hover {
+      background: #EEF2FF;
+      border-color: #C7D2FE;
+      color: #4338CA;
+      transform: translateX(2px);
+    }
+    .drawer-submenu.grid > a {
+      padding: 0.6rem 0.55rem;
+      text-align: center;
+      font-size: 0.75rem;
+    }
+    .drawer-indicator {
+      flex: 0 0 auto;
+      transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
+    }
+    .drawer-toggle[aria-expanded="true"] .drawer-indicator {
+      background: #EEF2FF;
+      border-color: #C7D2FE;
+      color: #4338CA;
+    }
+
+  
+    /* Mobile viewport fit: prevent child elements from creating a wider page */
+    @media (max-width: 1023px) {
+      html, body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: clip;
+      }
+      body {
+        position: relative;
+      }
+      main, header, footer, section {
+        max-width: 100%;
+      }
+      img, video, canvas, iframe, svg {
+        max-width: 100%;
+      }
+      .grid > *, .flex > * {
+        min-width: 0;
+      }
+      pre, code {
+        overflow-wrap: anywhere;
+      }
+    }
+
   </style>
 </head>
-<body>
-<header><div class="head wrap"><button class="menu" id="menuBtn" aria-label="Open menu">☰</button><a class="brand" href="#home"><span class="brand-mark">&lt;/&gt;</span><span><span class="brand-name">ByteCode</span><span class="brand-tag">LEARN | PRACTISE | LEVEL UP</span></span></a><nav id="nav"><a href="#home">⌂ Home</a><a href="#exams">Exams</a><a href="#subjects">Subjects</a><a href="#question-bank">Question Bank</a><a href="#tests">Tests</a><a href="#study-plan">Study Plan</a></nav><button class="btn outline" data-modal="login">♙ Login</button><button class="btn primary" data-modal="signup">Sign Up</button></div></header>
-<main class="wrap" id="home">
-  <section class="hero"><div class="eyebrow">Your complete preparation platform for</div><h1><strong>GATE CSE &amp; BPSC CSE</strong></h1><div class="hero-points"><span>Learn</span><span>Practise</span><span>Test</span><span>Analyse</span><span>Improve</span></div><div class="hero-actions"><a class="btn yellow" href="#question-bank">Start Practising&nbsp; ›</a><a class="btn outline" href="#subjects">Explore Syllabus</a></div></section>
-  <section class="shortcuts"><a class="shortcut" href="#subjects">▱ Syllabus<small>Exam-wise detailed syllabus</small></a><a class="shortcut" href="#resources">▤ Notes<small>Concise &amp; structured notes</small></a><a class="shortcut" href="#question-bank">▱ Question Bank<small>Topic-wise MCQs with explanations</small></a><a class="shortcut" href="#tests">▣ Practice Tests<small>Chapter, subject &amp; full tests</small></a><a class="shortcut" href="#resources">▤ Previous Year Papers<small>Solved PYQs with analysis</small></a><a class="shortcut" href="#results">▥ Progress Tracker<small>Track performance and improvement</small></a></section>
-  <section class="section" id="exams"><div class="section-head"><h2>Prepare for Your Target Exam</h2><a class="view" href="#exams">View All Exams →</a></div><div class="exam-grid"><article class="exam"><h3>GATE CSE</h3><p>Graduate Aptitude Test in Engineering</p><a href="#subjects">Syllabus</a><a href="#resources">Notes &amp; PYQs</a><a href="#tests">Mock Tests</a></article><article class="exam"><h3>BPSC Lecturer</h3><p>Polytechnic Assistant Lecturer (CSE)</p><a href="#subjects">Syllabus</a><a href="#resources">Notes &amp; PYQs</a><a href="#tests">Mock Tests</a></article><article class="exam"><h3>BPSC PGT</h3><p>+2 Computer Teacher (CSE)</p><a href="#subjects">Syllabus</a><a href="#resources">Notes &amp; PYQs</a><a href="#tests">Mock Tests</a></article><article class="exam"><h3>BPSC TGT</h3><p>Secondary Teacher (CSE)</p><a href="#subjects">Syllabus</a><a href="#resources">Notes &amp; PYQs</a><a href="#tests">Mock Tests</a></article></div></section>
-  <section class="section" id="subjects"><div class="section-head"><div><h2>CSE Subjects</h2><small>Explore core subjects for GATE &amp; BPSC Computer Science</small></div><a class="view" href="#question-bank">View Resources →</a></div><div class="subject-grid"><a class="subject" href="#question-bank">DSA</a><a class="subject" href="#question-bank">TOC</a><a class="subject" href="#question-bank">Compiler Design</a><a class="subject" href="#question-bank">COA</a><a class="subject" href="#question-bank">Operating Systems</a><a class="subject" href="#question-bank">DBMS</a><a class="subject" href="#question-bank">Computer Networks</a><a class="subject" href="#question-bank">Discrete Maths</a><a class="subject" href="#question-bank">Engineering Maths</a><a class="subject" href="#question-bank">Probability &amp; Statistics</a></div></section>
-  <section class="results" id="results"><h2>🏆 Our Results</h2><div class="result"><small>GATE CSE</small><b>320+</b><small>Selections</small></div><div class="result"><small>BPSC Lecturer</small><b>115+</b><small>Selections</small></div><div class="result"><small>BPSC PGT</small><b>280+</b><small>Selections</small></div><div class="result"><small>BPSC TGT</small><b>420+</b><small>Selections</small></div><small style="grid-column:1/-1">Illustrative design figures only — replace with verified ByteCode selection data before publishing.</small></section>
-  <section class="section panels" id="study-plan"><article class="panel"><h3>Follow a Structured Learning Path</h3><ul><li>Topic-wise learning</li><li>Practice and revision</li><li>Mock tests and analysis</li><li>Exam-ready preparation</li></ul></article><article class="panel" id="resources"><h3>📚 Learning Resources</h3><p>Topic-wise notes and explanations, MCQ question bank with solutions, previous-year question practice, and revision sheets.</p></article><article class="panel" id="tests"><h3>🏆 Popular Mock Tests</h3><p>GATE CSE full-length tests, BPSC Lecturer subject tests, and Computer Science practice.</p><button class="btn primary" onclick="notify('Mock test module will be connected next.')">Explore Tests</button></article></section>
-  <section class="cta"><div><h2>Ready to level up your preparation?</h2><p>Learn with focus. Practise with purpose. Keep improving with ByteCode.</p></div><button class="btn yellow" data-modal="signup">Create Your Account →</button></section>
-</main><footer><div class="wrap"><strong>ByteCode</strong> · LEARN | PRACTISE | LEVEL UP<br><br>© <span id="year"></span> ByteCode. All Rights Reserved. · <a href="mailto:support@bytecode.in">Contact support</a></div></footer>
-<div class="modal-bg" id="modal"><div class="modal"><button class="close" id="close" aria-label="Close">×</button><h3 id="modalTitle">Welcome back!</h3><p id="modalDesc">Login to continue your preparation.</p><form id="authForm"><label id="emailLabel">Username or email</label><input id="email" autocomplete="username" placeholder="Enter your username or email" required><label>Password</label><input id="password" type="password" autocomplete="current-password" placeholder="Enter your password" required><button class="submit" id="submit" type="submit">Login</button></form><p id="switchText">New to ByteCode? <a href="#" id="switch">Create an account</a></p></div></div><div class="toast" id="toast"></div>
-<script>
-const modal=document.getElementById('modal'),toast=document.getElementById('toast');let timer;function notify(message){toast.textContent=message;toast.classList.add('show');clearTimeout(timer);timer=setTimeout(()=>toast.classList.remove('show'),2500)}
-document.getElementById('year').textContent=new Date().getFullYear();let authMode='login';function openAuth(mode){authMode=mode;document.getElementById('modalTitle').textContent=mode==='signup'?'Create your ByteCode account':'Welcome back!';document.getElementById('modalDesc').textContent=mode==='signup'?'Join ByteCode and start your preparation.':'Login to continue your preparation.';document.getElementById('emailLabel').textContent=mode==='signup'?'Email address':'Username or email';document.getElementById('email').placeholder=mode==='signup'?'you@example.com':'Enter your username or email';document.getElementById('email').type=mode==='signup'?'email':'text';document.getElementById('submit').textContent=mode==='signup'?'Create Student Account':'Login';document.getElementById('switchText').innerHTML=mode==='signup'?'Already registered? <a href="#" id="switch">Login</a>':'New to ByteCode? <a href="#" id="switch">Create an account</a>';document.getElementById('switch').onclick=e=>{e.preventDefault();openAuth(authMode==='signup'?'login':'signup')};document.getElementById('authForm').reset();modal.classList.add('show')}
-document.querySelectorAll('[data-modal]').forEach(button=>button.addEventListener('click',()=>openAuth(button.dataset.modal)));document.getElementById('close').onclick=()=>modal.classList.remove('show');modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('show')});document.getElementById('authForm').addEventListener('submit',e=>{e.preventDefault();notify((authMode==='signup'?'Registration':'Login')+' interface ready. Connect your authentication backend to continue.')});document.addEventListener('keydown',e=>{if(e.key==='Escape')modal.classList.remove('show')});document.getElementById('menuBtn').addEventListener('click',()=>{const nav=document.getElementById('nav');const open=nav.style.display==='flex';nav.style.cssText=open?'':'display:flex;position:absolute;top:68px;left:0;right:0;background:white;padding:14px;box-shadow:var(--shadow);flex-direction:column;align-items:stretch'});document.querySelectorAll('#nav a').forEach(a=>a.addEventListener('click',()=>{if(innerWidth<=850)document.getElementById('nav').style.display='none'}));
-</script></body>
+<body class="overflow-x-hidden selection:bg-brand-600 selection:text-white">
+
+  <!-- ===================================================================== -->
+  <!-- 1. STICKY GLASSMORPHIC HEADER (72px)                                  -->
+  <!-- ===================================================================== -->
+  <header class="sticky top-0 z-40 h-[72px] w-full bg-white/85 backdrop-blur-md border-b border-slate-200/80 transition-shadow" id="siteHeader">
+    <div class="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
+
+      <!-- Left: Mobile Hamburger + Brand Logo -->
+      <div class="flex items-center gap-3">
+        <button id="menuBtn" type="button" aria-label="Open navigation menu"
+          class="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl bg-slate-100 hover:bg-brand-50 text-slate-700 hover:text-brand-600 transition-colors">
+          <svg class="w-[21px] h-[21px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="18" x2="20" y2="18" />
+          </svg>
+        </button>
+
+        <a href="#home" class="flex items-center gap-2.5 group focus:outline-none">
+          <span class="w-10 h-10 rounded-xl bg-navy-950 text-white flex items-center justify-center shadow-sm group-hover:bg-brand-600 transition-colors">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /><line x1="14" y1="4" x2="10" y2="20" />
+            </svg>
+          </span>
+          <span class="flex flex-col">
+            <span class="font-display font-extrabold text-xl tracking-tight text-navy-950 leading-none">ByteAcademy</span>
+            <span class="text-[10px] font-bold tracking-[0.14em] text-slate-500 uppercase mt-1 leading-none">LEARN · PRACTISE · LEVEL UP</span>
+          </span>
+        </a>
+      </div>
+
+      <!-- Center: Desktop Navigation with Dropdowns -->
+      <nav id="desktopNav" class="hidden lg:flex items-center gap-1" aria-label="Main navigation">
+        <a href="#home" class="px-3 py-2 rounded-lg text-sm font-semibold text-brand-600 bg-brand-50 transition-colors">Home</a>
+
+        <!-- Exams Dropdown -->
+        <div class="relative nav-group">
+          <button type="button" class="nav-trigger inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-brand-600 hover:bg-slate-100/80 transition-colors" aria-expanded="false">
+            <span>Exams</span>
+            <svg class="w-4 h-4 text-slate-400 nav-chevron transition-transform duration-150" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9" /></svg>
+          </button>
+          <div class="nav-dropdown hidden absolute left-0 top-[calc(100%+10px)] w-80 bg-white rounded-2xl border border-slate-200 shadow-dropdown p-2.5 animate-dropdown z-50">
+            <div class="px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-slate-400">Target Examinations</div>
+            <a href="gate-cse.html" class="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 transition-colors group">
+              <span class="w-9 h-9 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3m6-3v3M9 20v3m6-3v3M20 9h3m-3 6h3M1 9h3m-3 6h3"/></svg>
+              </span>
+              <div>
+                <div class="text-sm font-semibold text-slate-900 group-hover:text-brand-600">GATE CSE</div>
+                <div class="text-xs text-slate-500">National-level engineering exam</div>
+              </div>
+            </a>
+            <a href="bpsc-lecturer.html" class="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 transition-colors group">
+              <span class="w-9 h-9 rounded-lg bg-violet-50 text-violet-600 flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              </span>
+              <div>
+                <div class="text-sm font-semibold text-slate-900 group-hover:text-brand-600">BPSC Lecturer (CSE)</div>
+                <div class="text-xs text-slate-500">Polytechnic Assistant Lecturer</div>
+              </div>
+            </a>
+            <a href="bpsc-pgt.html" class="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 transition-colors group">
+              <span class="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              </span>
+              <div>
+                <div class="text-sm font-semibold text-slate-900 group-hover:text-brand-600">BPSC PGT</div>
+                <div class="text-xs text-slate-500">+2 Computer Teacher (CSE)</div>
+              </div>
+            </a>
+            <a href="bpsc-tgt.html" class="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 transition-colors group">
+              <span class="w-9 h-9 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              </span>
+              <div>
+                <div class="text-sm font-semibold text-slate-900 group-hover:text-brand-600">BPSC TGT</div>
+                <div class="text-xs text-slate-500">Secondary Computer Teacher</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Subjects Dropdown (2-column grid of all 10 CS subjects) -->
+        <div class="relative nav-group">
+          <button type="button" class="nav-trigger inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-brand-600 hover:bg-slate-100/80 transition-colors" aria-expanded="false">
+            <span>Subjects</span>
+            <svg class="w-4 h-4 text-slate-400 nav-chevron transition-transform duration-150" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9" /></svg>
+          </button>
+          <div class="nav-dropdown hidden absolute left-0 top-[calc(100%+10px)] w-[420px] bg-white rounded-2xl border border-slate-200 shadow-dropdown p-3 animate-dropdown z-50">
+            <div class="px-2.5 py-1.5 text-xs font-bold uppercase tracking-wider text-slate-400">Core Computer Science Subjects</div>
+            <div class="grid grid-cols-2 gap-1 mt-1">
+              <a href="#subjects" data-select-subject="DSA" class="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600 transition-colors">
+                <svg aria-hidden="true" class="w-4 h-4 shrink-0 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h8M8 12h8M8 18h8"/><circle cx="5" cy="6" r="1"/><circle cx="5" cy="12" r="1"/><circle cx="5" cy="18" r="1"/></svg>DSA
+              </a>
+              <a href="#subjects" data-select-subject="TOC" class="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600 transition-colors">
+                <svg aria-hidden="true" class="w-4 h-4 shrink-0 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="6" rx="1"/><rect x="14" y="15" width="7" height="6" rx="1"/><path d="M6.5 9v4h11v2"/></svg>TOC
+              </a>
+              <a href="#subjects" data-select-subject="Compiler Design" class="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600 transition-colors">
+                <svg aria-hidden="true" class="w-4 h-4 shrink-0 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v5m0 0-4 4m4-4 4 4M8 12v4m8-4v4M8 16H4v5h8v-5H8zm8 0h-4v5h8v-5h-4z"/></svg>Compiler Design
+              </a>
+              <a href="#subjects" data-select-subject="COA" class="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600 transition-colors">
+                <svg aria-hidden="true" class="w-4 h-4 shrink-0 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9zM9 1v3m6-3v3M9 20v3m6-3v3M1 9h3m-3 6h3m16-6h3m-3 6h3"/></svg>COA
+              </a>
+              <a href="#subjects" data-select-subject="Operating Systems" class="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600 transition-colors">
+                <svg aria-hidden="true" class="w-4 h-4 shrink-0 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>Operating Systems
+              </a>
+              <a href="#subjects" data-select-subject="DBMS" class="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600 transition-colors">
+                <svg aria-hidden="true" class="w-4 h-4 shrink-0 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>DBMS
+              </a>
+              <a href="#subjects" data-select-subject="DCN" class="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600 transition-colors">
+                <svg aria-hidden="true" class="w-4 h-4 shrink-0 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><circle cx="4" cy="5" r="2"/><circle cx="20" cy="5" r="2"/><circle cx="4" cy="19" r="2"/><circle cx="20" cy="19" r="2"/><path d="m10 10-4.5-3.5m8.5 3.5 4.5-3.5M10 14l-4.5 3.5m8.5-3.5 4.5 3.5"/></svg>DCN
+              </a>
+              <a href="#subjects" data-select-subject="Discrete Maths" class="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600 transition-colors">
+                <svg aria-hidden="true" class="w-4 h-4 shrink-0 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="12" r="5"/><circle cx="16" cy="12" r="5"/></svg>Discrete Maths
+              </a>
+              <a href="#subjects" data-select-subject="Engineering Maths" class="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600 transition-colors">
+                <svg aria-hidden="true" class="w-4 h-4 shrink-0 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3h16v18H4zM8 7h8M8 11h2m4 0h2m-8 4h2m4 0h2m-8 3h8"/></svg>Engineering Maths
+              </a>
+              <a href="#subjects" data-select-subject="Probability & Statistics" class="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600 transition-colors">
+                <svg aria-hidden="true" class="w-4 h-4 shrink-0 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4m0 16h17"/><path d="m7 16 4-5 3 2 5-7"/></svg>Probability &amp; Stats
+              </a>
+            </div>
+            <div class="mt-2.5 pt-2.5 border-t border-slate-100">
+              <a href="#subjects" class="flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-bold text-brand-600 hover:bg-brand-50 transition-colors">
+                <span>Explore all 10 CSE subjects</span>
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <a href="#question-bank" class="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-brand-600 hover:bg-slate-100/80 transition-colors">Question Bank</a>
+
+        <!-- Tests Dropdown -->
+        <div class="relative nav-group">
+          <button type="button" class="nav-trigger inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-brand-600 hover:bg-slate-100/80 transition-colors" aria-expanded="false">
+            <span>Tests</span>
+            <svg class="w-4 h-4 text-slate-400 nav-chevron transition-transform duration-150" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9" /></svg>
+          </button>
+          <div class="nav-dropdown hidden absolute left-0 top-[calc(100%+10px)] w-72 bg-white rounded-2xl border border-slate-200 shadow-dropdown p-2.5 animate-dropdown z-50">
+            <div class="px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-slate-400">Practice &amp; Assess</div>
+            <a href="#tests" class="flex items-start gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-50 transition-colors"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2h6v2M8 10h8m-8 4h8m-8 4h5"/></svg><span class="min-w-0 flex-1"><div class="text-sm font-semibold text-slate-900">Full-Length Mock Tests</div>
+              <div class="text-xs text-slate-500">Timed exam-interface simulations</div></span></a>
+            <a href="#tests" class="flex items-start gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-50 transition-colors"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 1 4 17.5zM4 5.5v12M8 7h8"/></svg><span class="min-w-0 flex-1"><div class="text-sm font-semibold text-slate-900">Subject-Wise Tests</div>
+              <div class="text-xs text-slate-500">Evaluate core subject mastery</div></span></a>
+            <a href="#tests" class="flex items-start gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-50 transition-colors"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 6h.01M4 12h.01M4 18h.01"/></svg><span class="min-w-0 flex-1"><div class="text-sm font-semibold text-slate-900">Chapter-Wise Practice</div>
+              <div class="text-xs text-slate-500">Focused topic-level drills</div></span></a>
+            <a href="#tests" class="flex items-start gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-50 transition-colors"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 2.6-6.4L3 8"/><path d="M3 3v5h5m4-1v5l3 2"/></svg><span class="min-w-0 flex-1"><div class="text-sm font-semibold text-slate-900">Previous Year Practice</div>
+              <div class="text-xs text-slate-500">Authentic GATE &amp; BPSC PYQ sets</div></span></a>
+          </div>
+        </div>
+
+        <!-- Resources Dropdown -->
+        <div class="relative nav-group">
+          <button type="button" class="nav-trigger inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-brand-600 hover:bg-slate-100/80 transition-colors" aria-expanded="false">
+            <span>Resources</span>
+            <svg class="w-4 h-4 text-slate-400 nav-chevron transition-transform duration-150" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9" /></svg>
+          </button>
+          <div class="nav-dropdown hidden absolute left-0 top-[calc(100%+10px)] w-72 bg-white rounded-2xl border border-slate-200 shadow-dropdown p-2.5 animate-dropdown z-50">
+            <div class="px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-slate-400">Study Materials</div>
+            <a href="#subjects" class="flex items-start gap-3 px-3 py-2 rounded-xl hover:bg-slate-50 text-sm font-semibold text-slate-800"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 1 4 17.5zM4 5.5v12M8 7h8"/></svg><span class="min-w-0 flex-1">Detailed Syllabus</span></a>
+            <a href="#resources" class="flex items-start gap-3 px-3 py-2 rounded-xl hover:bg-slate-50 text-sm font-semibold text-slate-800"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h8l4 4v16H6zM14 2v5h5M9 12h6m-6 4h6"/></svg><span class="min-w-0 flex-1">Structured Study Notes</span></a>
+            <a href="#resources" class="flex items-start gap-3 px-3 py-2 rounded-xl hover:bg-slate-50 text-sm font-semibold text-slate-800"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 2.6-6.4L3 8"/><path d="M3 3v5h5m4-1v5l3 2"/></svg><span class="min-w-0 flex-1">Previous Year Papers (PYQs)</span></a>
+            <a href="#resources" class="flex items-start gap-3 px-3 py-2 rounded-xl hover:bg-slate-50 text-sm font-semibold text-slate-800"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8v4H8zm0 8h.01m4 0h.01m4 0h.01M8 18h.01m4 0h.01m4 0h.01"/></svg><span class="min-w-0 flex-1">Formula &amp; Revision Sheets</span></a>
+            <a href="#study-plan" class="flex items-start gap-3 px-3 py-2 rounded-xl hover:bg-slate-50 text-sm font-semibold text-slate-800"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 9h18"/></svg><span class="min-w-0 flex-1">Structured Study Plan</span></a>
+          </div>
+        </div>
+
+        <!-- More Dropdown -->
+        <div class="relative nav-group">
+          <button type="button" class="nav-trigger inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-brand-600 hover:bg-slate-100/80 transition-colors" aria-expanded="false">
+            <span>More</span>
+            <svg class="w-4 h-4 text-slate-400 nav-chevron transition-transform duration-150" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9" /></svg>
+          </button>
+          <div class="nav-dropdown hidden absolute right-0 top-[calc(100%+10px)] w-64 bg-white rounded-2xl border border-slate-200 shadow-dropdown p-2.5 animate-dropdown z-50">
+            <div class="px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-slate-400">Discover ByteAcademy</div>
+            <a href="#results" class="flex items-start gap-3 px-3 py-2 rounded-xl hover:bg-slate-50 text-sm font-semibold text-slate-800"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8m-4-4v4M7 4h10v6a5 5 0 0 1-10 0zM7 6H3v2a4 4 0 0 0 4 4m10-6h4v2a4 4 0 0 1-4 4"/></svg><span class="min-w-0 flex-1">Our Results</span></a>
+            <a href="#testimonials" class="flex items-start gap-3 px-3 py-2 rounded-xl hover:bg-slate-50 text-sm font-semibold text-slate-800"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2m1-15a3 3 0 0 1 0 6m2 3a5 5 0 0 1 3 5v1"/></svg><span class="min-w-0 flex-1">Success Stories</span></a>
+            <a href="#updates" class="flex items-start gap-3 px-3 py-2 rounded-xl hover:bg-slate-50 text-sm font-semibold text-slate-800"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9m-8 12h4"/></svg><span class="min-w-0 flex-1">Latest Exam Updates</span></a>
+            <a href="#faqs" class="flex items-start gap-3 px-3 py-2 rounded-xl hover:bg-slate-50 text-sm font-semibold text-slate-800"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 4.3 1.7c-1.2 1.1-1.8 1.5-1.8 3.3M12 17h.01"/></svg><span class="min-w-0 flex-1">FAQs</span></a>
+            <a href="mailto:support@bytecode.in" class="flex items-start gap-3 px-3 py-2 rounded-xl hover:bg-slate-50 text-sm font-semibold text-slate-800"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-9 8.5 9 9 0 0 1-4-.9L3 21l1.9-4.5A8.5 8.5 0 1 1 21 11.5z"/><path d="M8 11h8m-8 4h5"/></svg><span class="min-w-0 flex-1">Contact &amp; Support</span></a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Right: Command Search + Auth Buttons -->
+      <div class="flex items-center gap-2 sm:gap-2.5">
+        <button id="openSearchBtn" type="button" aria-label="Search platform"
+          class="inline-flex items-center gap-2 h-10 px-2.5 sm:px-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-900 text-sm transition-colors">
+          <svg class="w-4 h-4 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <span class="hidden xl:inline text-slate-500 font-medium">Search...</span>
+          <kbd class="hidden xl:inline-flex items-center px-1.5 py-0.5 text-[11px] font-mono font-semibold text-slate-500 bg-white border border-slate-200 rounded-md">⌘K</kbd>
+        </button>
+
+        <button type="button" data-modal="login"
+          class="inline-flex items-center justify-center h-10 px-3.5 sm:px-4 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-800 text-sm font-semibold transition-colors">
+          Login
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================================================================== -->
+  <!-- MOBILE SLIDE-IN NAVIGATION DRAWER                                     -->
+  <!-- ===================================================================== -->
+  <div id="mobileOverlay" class="fixed inset-0 z-50 bg-navy-950/60 backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-200 lg:hidden" aria-hidden="true">
+    <aside id="mobileDrawer" class="absolute top-0 right-0 w-[min(88vw,380px)] h-full bg-white shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col overflow-y-auto">
+      <!-- Drawer Header -->
+      <div class="p-5 bg-navy-950 text-white flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <span class="w-9 h-9 rounded-lg bg-brand-600 flex items-center justify-center">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>
+          </span>
+          <div>
+            <div class="font-display font-extrabold text-lg leading-none">ByteAcademy</div>
+            <div class="text-[10px] tracking-widest text-slate-400 font-semibold mt-1">LEARN · PRACTISE · LEVEL UP</div>
+          </div>
+        </div>
+        <button id="drawerClose" type="button" aria-label="Close navigation menu" class="w-9 h-9 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <!-- Drawer Links -->
+      <div class="p-4 flex-1 space-y-1.5">
+        <div class="px-2 pb-1 text-xs font-bold uppercase tracking-wider text-slate-400">Explore Platform</div>
+
+        <a href="#home" class="mobile-nav-link flex items-center gap-3 px-3.5 py-3 rounded-xl bg-brand-50 text-brand-600 font-semibold text-sm">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span>Home</span>
+        </a>
+
+        <!-- Accordion: Exams -->
+        <div class="drawer-group">
+          <button type="button" class="drawer-toggle w-full flex items-center justify-between px-3.5 py-3 rounded-xl hover:bg-slate-100 text-slate-800 font-semibold text-sm transition-colors" aria-expanded="false">
+            <span class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              Examinations
+            </span>
+            <span class="drawer-indicator w-7 h-7 rounded-lg border border-slate-200 bg-white text-brand-600 flex items-center justify-center text-lg font-semibold leading-none shadow-sm" aria-hidden="true">+</span>
+          </button>
+          <div class="drawer-submenu hidden mx-2 mt-1 mb-2 p-2 rounded-xl border border-slate-200 bg-slate-50 shadow-sm space-y-1">
+            <a href="gate-cse.html" class="mobile-nav-link block py-2 px-3 rounded-lg text-sm text-slate-600 hover:bg-slate-100 hover:text-brand-600"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h5M8 16h8"/></svg><span class="min-w-0">GATE CSE</span></a>
+            <a href="bpsc-lecturer.html" class="mobile-nav-link block py-2 px-3 rounded-lg text-sm text-slate-600 hover:bg-slate-100 hover:text-brand-600"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg><span class="min-w-0">BPSC Lecturer (CSE)</span></a>
+            <a href="bpsc-pgt.html" class="mobile-nav-link block py-2 px-3 rounded-lg text-sm text-slate-600 hover:bg-slate-100 hover:text-brand-600"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="min-w-0">BPSC PGT (+2 Teacher)</span></a>
+            <a href="bpsc-tgt.html" class="mobile-nav-link block py-2 px-3 rounded-lg text-sm text-slate-600 hover:bg-slate-100 hover:text-brand-600"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg><span class="min-w-0">BPSC TGT (Secondary)</span></a>
+          </div>
+        </div>
+
+        <!-- Accordion: Subjects -->
+        <div class="drawer-group">
+          <button type="button" class="drawer-toggle w-full flex items-center justify-between px-3.5 py-3 rounded-xl hover:bg-slate-100 text-slate-800 font-semibold text-sm transition-colors" aria-expanded="false">
+            <span class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+              Subjects &amp; Syllabus
+            </span>
+            <span class="drawer-indicator w-7 h-7 rounded-lg border border-slate-200 bg-white text-brand-600 flex items-center justify-center text-lg font-semibold leading-none shadow-sm" aria-hidden="true">+</span>
+          </button>
+          <div class="drawer-submenu hidden mx-2 mt-1 mb-2 p-2 rounded-xl border border-slate-200 bg-slate-50 shadow-sm grid grid-cols-1 gap-1.5">
+            <a href="#subjects" class="mobile-nav-link block py-1.5 px-2.5 rounded-lg text-xs font-medium text-slate-600 hover:bg-slate-100"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h8M8 12h8M8 18h8"/><circle cx="5" cy="6" r="1"/><circle cx="5" cy="12" r="1"/><circle cx="5" cy="18" r="1"/></svg><span class="min-w-0">DSA</span></a>
+            <a href="#subjects" class="mobile-nav-link block py-1.5 px-2.5 rounded-lg text-xs font-medium text-slate-600 hover:bg-slate-100"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="6" rx="1"/><rect x="14" y="15" width="7" height="6" rx="1"/><path d="M6.5 9v4h11v2"/></svg><span class="min-w-0">TOC</span></a>
+            <a href="#subjects" class="mobile-nav-link block py-1.5 px-2.5 rounded-lg text-xs font-medium text-slate-600 hover:bg-slate-100"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v5m0 0-4 4m4-4 4 4M8 12v4m8-4v4M8 16H4v5h8v-5H8zm8 0h-4v5h8v-5h-4z"/></svg><span class="min-w-0">Compiler Design</span></a>
+            <a href="#subjects" class="mobile-nav-link block py-1.5 px-2.5 rounded-lg text-xs font-medium text-slate-600 hover:bg-slate-100"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9zM9 1v3m6-3v3M9 20v3m6-3v3M1 9h3m-3 6h3m16-6h3m-3 6h3"/></svg><span class="min-w-0">COA</span></a>
+            <a href="#subjects" class="mobile-nav-link block py-1.5 px-2.5 rounded-lg text-xs font-medium text-slate-600 hover:bg-slate-100"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/></svg><span class="min-w-0">Operating Systems</span></a>
+            <a href="#subjects" class="mobile-nav-link block py-1.5 px-2.5 rounded-lg text-xs font-medium text-slate-600 hover:bg-slate-100"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg><span class="min-w-0">DBMS</span></a>
+            <a href="#subjects" class="mobile-nav-link block py-1.5 px-2.5 rounded-lg text-xs font-medium text-slate-600 hover:bg-slate-100"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><circle cx="4" cy="5" r="2"/><circle cx="20" cy="5" r="2"/><circle cx="4" cy="19" r="2"/><circle cx="20" cy="19" r="2"/><path d="m10 10-4.5-3.5m8.5 3.5 4.5-3.5M10 14l-4.5 3.5m8.5-3.5 4.5 3.5"/></svg><span class="min-w-0">DCN</span></a>
+            <a href="#subjects" class="mobile-nav-link block py-1.5 px-2.5 rounded-lg text-xs font-medium text-slate-600 hover:bg-slate-100"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="12" r="5"/><circle cx="16" cy="12" r="5"/></svg><span class="min-w-0">Discrete Maths</span></a>
+            <a href="#subjects" class="mobile-nav-link block py-1.5 px-2.5 rounded-lg text-xs font-medium text-slate-600 hover:bg-slate-100"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3h16v18H4zM8 7h8M8 11h2m4 0h2m-8 4h2m4 0h2m-8 3h8"/></svg><span class="min-w-0">Engg. Maths</span></a>
+            <a href="#subjects" class="mobile-nav-link block py-1.5 px-2.5 rounded-lg text-xs font-medium text-slate-600 hover:bg-slate-100"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4m0 16h17"/><path d="m7 16 4-5 3 2 5-7"/></svg><span class="min-w-0">Prob. &amp; Stats</span></a>
+          </div>
+        </div>
+
+        <a href="#question-bank" class="mobile-nav-link flex items-center gap-3 px-3.5 py-3 rounded-xl hover:bg-slate-100 text-slate-800 font-semibold text-sm">
+          <svg class="w-5 h-5 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          <span>Question Bank</span>
+        </a>
+
+        <!-- Accordion: Tests -->
+        <div class="drawer-group">
+          <button type="button" class="drawer-toggle w-full flex items-center justify-between px-3.5 py-3 rounded-xl hover:bg-slate-100 text-slate-800 font-semibold text-sm transition-colors" aria-expanded="false">
+            <span class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Practice Tests
+            </span>
+            <span class="drawer-indicator w-7 h-7 rounded-lg border border-slate-200 bg-white text-brand-600 flex items-center justify-center text-lg font-semibold leading-none shadow-sm" aria-hidden="true">+</span>
+          </button>
+          <div class="drawer-submenu hidden mx-2 mt-1 mb-2 p-2 rounded-xl border border-slate-200 bg-slate-50 shadow-sm space-y-1">
+            <a href="#tests" class="mobile-nav-link block py-2 px-3 rounded-lg text-sm text-slate-600 hover:bg-slate-100"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span class="min-w-0">Full-Length Mock Tests</span></a>
+            <a href="#tests" class="mobile-nav-link block py-2 px-3 rounded-lg text-sm text-slate-600 hover:bg-slate-100"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 1 4 17.5zM4 5.5v12M8 7h8"/></svg><span class="min-w-0">Subject-Wise Tests</span></a>
+            <a href="#tests" class="mobile-nav-link block py-2 px-3 rounded-lg text-sm text-slate-600 hover:bg-slate-100"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4zM8 8h8M8 12h5M8 16h8"/></svg><span class="min-w-0">Chapter-Wise Practice</span></a>
+            <a href="#tests" class="mobile-nav-link block py-2 px-3 rounded-lg text-sm text-slate-600 hover:bg-slate-100"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg><span class="min-w-0">Previous Year Practice</span></a>
+          </div>
+        </div>
+
+        <!-- Accordion: Resources -->
+        <div class="drawer-group">
+          <button type="button" class="drawer-toggle w-full flex items-center justify-between px-3.5 py-3 rounded-xl hover:bg-slate-100 text-slate-800 font-semibold text-sm transition-colors" aria-expanded="false">
+            <span class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              Notes &amp; Resources
+            </span>
+            <span class="drawer-indicator w-7 h-7 rounded-lg border border-slate-200 bg-white text-brand-600 flex items-center justify-center text-lg font-semibold leading-none shadow-sm" aria-hidden="true">+</span>
+          </button>
+          <div class="drawer-submenu hidden mx-2 mt-1 mb-2 p-2 rounded-xl border border-slate-200 bg-slate-50 shadow-sm space-y-1">
+            <a href="#resources" class="mobile-nav-link block py-2 px-3 rounded-lg text-sm text-slate-600 hover:bg-slate-100"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="min-w-0">Study Notes</span></a>
+            <a href="#resources" class="mobile-nav-link block py-2 px-3 rounded-lg text-sm text-slate-600 hover:bg-slate-100"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6M9 13h8M9 17h8"/></svg><span class="min-w-0">Previous Year Papers</span></a>
+            <a href="#resources" class="mobile-nav-link block py-2 px-3 rounded-lg text-sm text-slate-600 hover:bg-slate-100"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 7h8M8 12h2m4 0h2m-8 4h8"/></svg><span class="min-w-0">Formula Sheets</span></a>
+            <a href="#study-plan" class="mobile-nav-link block py-2 px-3 rounded-lg text-sm text-slate-600 hover:bg-slate-100"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h3m-3 3h7"/></svg><span class="min-w-0">Study Plan</span></a>
+          </div>
+        </div>
+
+        <!-- Accordion: More -->
+        <div class="drawer-group">
+          <button type="button" class="drawer-toggle w-full flex items-center justify-between px-3.5 py-3 rounded-xl hover:bg-slate-100 text-slate-800 font-semibold text-sm transition-colors" aria-expanded="false">
+            <span class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+              More
+            </span>
+            <span class="drawer-indicator w-7 h-7 rounded-lg border border-slate-200 bg-white text-brand-600 flex items-center justify-center text-lg font-semibold leading-none shadow-sm" aria-hidden="true">+</span>
+          </button>
+          <div class="drawer-submenu hidden mx-2 mt-1 mb-2 p-2 rounded-xl border border-slate-200 bg-slate-50 shadow-sm space-y-1">
+            <a href="#results" class="mobile-nav-link block py-2 px-3 rounded-lg text-sm text-slate-600 hover:bg-slate-100"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10m6 10V4m6 16v-7m6 7V7"/></svg><span class="min-w-0">Our Results</span></a>
+            <a href="#testimonials" class="mobile-nav-link block py-2 px-3 rounded-lg text-sm text-slate-600 hover:bg-slate-100"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3l-5.6 2.9 1.1-6.2L3 9.6l6.2-.9z"/></svg><span class="min-w-0">Success Stories</span></a>
+            <a href="#updates" class="mobile-nav-link block py-2 px-3 rounded-lg text-sm text-slate-600 hover:bg-slate-100"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="8"/></svg><span class="min-w-0">Latest Updates</span></a>
+            <a href="#faqs" class="mobile-nav-link block py-2 px-3 rounded-lg text-sm text-slate-600 hover:bg-slate-100"><svg aria-hidden="true" class="w-4 h-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 4.2 1.8c-1.2 1-1.7 1.4-1.7 3.2M12 17.5h.01"/></svg><span class="min-w-0">FAQs</span></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Drawer CTA -->
+      <div class="p-4 m-4 rounded-2xl bg-brand-50 border border-brand-100 text-center">
+        <p class="text-sm font-bold text-navy-950 mb-3">Ready to level up your prep?</p>
+        <button type="button" data-modal="signup" class="w-full py-3 px-4 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold shadow-sm transition-colors">
+          Create Free Student Account
+        </button>
+        <p class="text-xs text-slate-500 mt-2.5">Learn with focus. Practise with purpose.</p>
+      </div>
+    </aside>
+  </div>
+
+  <main id="home">
+    <!-- ===================================================================== -->
+    <!-- 2. HERO SECTION (2-Column Dark Navy-Indigo Mesh + Live DPP Widget)    -->
+    <!-- ===================================================================== -->
+    <section class="hero-mesh relative text-white py-14 sm:py-18 lg:py-22 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+
+          <!-- Left Column: Value Proposition -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-sm">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span class="text-xs sm:text-sm font-semibold text-indigo-100 tracking-wide">GATE 2027 &amp; BPSC CSE Preparation</span>
+            </div>
+
+            <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-[52px] leading-[1.1] tracking-tight text-white">
+              Master Computer Science.<br />
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-indigo-300">Crack GATE &amp; BPSC CSE.</span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed">
+              Your structured preparation ecosystem for <strong class="text-white font-semibold">GATE CSE</strong>, <strong class="text-white font-semibold">BPSC Polytechnic Lecturer</strong>, <strong class="text-white font-semibold">PGT (+2)</strong>, and <strong class="text-white font-semibold">TGT</strong> Computer Science examinations.
+            </p>
+
+            <!-- 5-Step Process Pills -->
+            <div class="flex flex-wrap items-center gap-2 pt-1">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs sm:text-sm font-medium text-slate-200">
+                <svg class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Learn
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs sm:text-sm font-medium text-slate-200">
+                <svg class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Practise
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs sm:text-sm font-medium text-slate-200">
+                <svg class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Test
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs sm:text-sm font-medium text-slate-200">
+                <svg class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Analyse
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs sm:text-sm font-medium text-slate-200">
+                <svg class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Improve
+              </span>
+            </div>
+
+            <!-- CTAs -->
+            <div class="flex flex-wrap items-center gap-3.5 pt-2">
+              <a href="#question-bank" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-navy-950 font-bold text-sm sm:text-base shadow-lg shadow-amber-500/20 transition-all hover:-translate-y-0.5">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                <span>Start Practising</span>
+              </a>
+              <a href="#subjects" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold text-sm sm:text-base transition-all">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                <span>Explore Syllabus</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Daily Practice Problem (DPP) Live Widget -->
+          <div class="lg:col-span-5">
+            <div class="rounded-2xl bg-navy-900/95 border border-slate-700/80 shadow-2xl overflow-hidden backdrop-blur-md">
+              <!-- Widget Top Bar -->
+              <div class="px-5 py-3.5 bg-slate-800/70 border-b border-slate-700/80 flex items-center justify-between gap-2">
+                <div class="flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                  <span class="font-mono text-xs font-semibold text-slate-200 uppercase tracking-wider">Daily Practice Problem</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span id="dppCounter" class="font-mono text-xs text-slate-400">1 / 3</span>
+                  <span id="dppExamTag" class="px-2 py-0.5 rounded-md bg-brand-600/30 border border-brand-500/40 text-[11px] font-semibold text-indigo-200">GATE CSE</span>
+                </div>
+              </div>
+
+              <!-- Question Area -->
+              <div class="p-5 space-y-4">
+                <div class="flex items-center justify-between gap-2">
+                  <span id="dppSubject" class="text-xs font-bold text-indigo-300 uppercase tracking-wider">Data Structures &amp; Algorithms</span>
+                  <span id="dppDifficulty" class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-amber-500/15 text-amber-300 border border-amber-500/30">Medium</span>
+                </div>
+
+                <p id="dppQuestion" class="text-sm sm:text-[15px] text-slate-100 font-medium leading-relaxed"></p>
+
+                <!-- Options Container -->
+                <div id="dppOptions" class="space-y-2.5"></div>
+
+                <!-- Instant Explanation Box (hidden until answered) -->
+                <div id="dppExplanation" class="hidden p-3.5 rounded-xl bg-slate-800/90 border border-slate-700 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  <div id="dppFeedbackTitle" class="font-bold mb-1"></div>
+                  <p id="dppExplanationText"></p>
+                </div>
+
+                <!-- Widget Footer -->
+                <div class="pt-2 border-t border-slate-800 flex items-center justify-between">
+                  <div class="text-xs text-slate-400 font-mono">Score: <span id="dppScore" class="text-emerald-400 font-bold">0</span>/3</div>
+                  <button id="dppNextBtn" type="button"
+                    class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-brand-600 hover:bg-brand-500 text-white text-xs font-semibold transition-colors">
+                    <span>Next Question</span>
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 3. QUICK ACCESS BAR (6 Clean Cards)                                   -->
+    <!-- ===================================================================== -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-7 relative z-20">
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+        <a href="#subjects" class="group bg-white rounded-2xl p-4 border border-slate-200/90 shadow-card hover:shadow-card-hover hover:-translate-y-0.5 transition-all flex flex-col gap-2.5">
+          <span class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </span>
+          <div>
+            <div class="font-display font-bold text-sm text-slate-900 group-hover:text-brand-600">Syllabus</div>
+            <div class="text-xs text-slate-500 mt-0.5">Exam-wise topics</div>
+          </div>
+        </a>
+
+        <a href="#resources" class="group bg-white rounded-2xl p-4 border border-slate-200/90 shadow-card hover:shadow-card-hover hover:-translate-y-0.5 transition-all flex flex-col gap-2.5">
+          <span class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-white transition-colors">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </span>
+          <div>
+            <div class="font-display font-bold text-sm text-slate-900 group-hover:text-brand-600">Structured Notes</div>
+            <div class="text-xs text-slate-500 mt-0.5">Concise concepts</div>
+          </div>
+        </a>
+
+        <a href="#question-bank" class="group bg-white rounded-2xl p-4 border border-slate-200/90 shadow-card hover:shadow-card-hover hover:-translate-y-0.5 transition-all flex flex-col gap-2.5">
+          <span class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </span>
+          <div>
+            <div class="font-display font-bold text-sm text-slate-900 group-hover:text-brand-600">Question Bank</div>
+            <div class="text-xs text-slate-500 mt-0.5">Topic-wise MCQs</div>
+          </div>
+        </a>
+
+        <a href="#tests" class="group bg-white rounded-2xl p-4 border border-slate-200/90 shadow-card hover:shadow-card-hover hover:-translate-y-0.5 transition-all flex flex-col gap-2.5">
+          <span class="w-10 h-10 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center group-hover:bg-rose-600 group-hover:text-white transition-colors">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </span>
+          <div>
+            <div class="font-display font-bold text-sm text-slate-900 group-hover:text-brand-600">Practice Tests</div>
+            <div class="text-xs text-slate-500 mt-0.5">Timed mock exams</div>
+          </div>
+        </a>
+
+        <a href="#resources" class="group bg-white rounded-2xl p-4 border border-slate-200/90 shadow-card hover:shadow-card-hover hover:-translate-y-0.5 transition-all flex flex-col gap-2.5">
+          <span class="w-10 h-10 rounded-xl bg-violet-50 text-violet-600 flex items-center justify-center group-hover:bg-violet-600 group-hover:text-white transition-colors">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </span>
+          <div>
+            <div class="font-display font-bold text-sm text-slate-900 group-hover:text-brand-600">Previous Papers</div>
+            <div class="text-xs text-slate-500 mt-0.5">Solved PYQ archive</div>
+          </div>
+        </a>
+
+        <a href="#study-plan" class="group bg-white rounded-2xl p-4 border border-slate-200/90 shadow-card hover:shadow-card-hover hover:-translate-y-0.5 transition-all flex flex-col gap-2.5">
+          <span class="w-10 h-10 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center group-hover:bg-teal-600 group-hover:text-white transition-colors">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </span>
+          <div>
+            <div class="font-display font-bold text-sm text-slate-900 group-hover:text-brand-600">Progress Tracker</div>
+            <div class="text-xs text-slate-500 mt-0.5">Weak-area insights</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 4. TARGET EXAMINATIONS SECTION (4 Executive Cards)                    -->
+    <!-- ===================================================================== -->
+    <section id="exams" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-brand-600">Exam Tracks</span>
+          <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-navy-950 tracking-tight mt-1">Prepare for Your Target Exam</h2>
+          <p class="text-sm sm:text-base text-slate-600 mt-1.5">Dedicated syllabus, notes, PYQs, and full-length mock test series tailored to each exam.</p>
+        </div>
+        <a href="#tests" class="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 hover:text-brand-700 shrink-0">
+          <span>Explore All Test Series</span>
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+        <!-- Card 1: GATE CSE -->
+        <article class="bg-white rounded-2xl border border-slate-200 shadow-card hover:shadow-card-hover transition-all overflow-hidden flex flex-col">
+          <div class="h-1.5 bg-gradient-to-r from-blue-500 to-indigo-600"></div>
+          <div class="p-6 flex-1 flex flex-col">
+            <div class="flex items-start justify-between gap-3 mb-4">
+              <span class="w-11 h-11 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3m6-3v3M9 20v3m6-3v3M20 9h3m-3 6h3M1 9h3m-3 6h3"/></svg>
+              </span>
+              <span class="px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-semibold">National Level</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-navy-950">GATE CSE</h3>
+            <p class="text-sm text-slate-600 mt-1 leading-relaxed">Graduate Aptitude Test in Engineering for IITs, IISc, and PSU recruitment.</p>
+
+            <div class="grid grid-cols-3 gap-2 my-5 py-3 border-y border-slate-100 text-center">
+              <div>
+                <div class="font-mono font-bold text-sm text-slate-900">10</div>
+                <div class="text-[11px] text-slate-500">Subjects</div>
+              </div>
+              <div class="border-x border-slate-100">
+                <div class="font-mono font-bold text-sm text-slate-900">25+ Yrs</div>
+                <div class="text-[11px] text-slate-500">PYQs</div>
+              </div>
+              <div>
+                <div class="font-mono font-bold text-sm text-slate-900">40+</div>
+                <div class="text-[11px] text-slate-500">Mocks</div>
+              </div>
+            </div>
+
+            <div class="mt-auto grid grid-cols-2 gap-2 text-xs font-semibold">
+              <a href="#subjects" class="py-2 px-3 rounded-lg bg-slate-50 hover:bg-blue-50 text-slate-700 hover:text-blue-700 text-center transition-colors">Syllabus</a>
+              <a href="#resources" class="py-2 px-3 rounded-lg bg-slate-50 hover:bg-blue-50 text-slate-700 hover:text-blue-700 text-center transition-colors">Notes</a>
+              <a href="#resources" class="py-2 px-3 rounded-lg bg-slate-50 hover:bg-blue-50 text-slate-700 hover:text-blue-700 text-center transition-colors">PYQs</a>
+              <a href="#tests" class="py-2 px-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-center transition-colors">Mock Tests</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2: BPSC Lecturer -->
+        <article class="bg-white rounded-2xl border border-slate-200 shadow-card hover:shadow-card-hover transition-all overflow-hidden flex flex-col">
+          <div class="h-1.5 bg-gradient-to-r from-violet-500 to-purple-600"></div>
+          <div class="p-6 flex-1 flex flex-col">
+            <div class="flex items-start justify-between gap-3 mb-4">
+              <span class="w-11 h-11 rounded-xl bg-violet-50 text-violet-600 flex items-center justify-center">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              </span>
+              <span class="px-2.5 py-1 rounded-full bg-violet-50 text-violet-700 text-xs font-semibold">Bihar State</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-navy-950">BPSC Lecturer</h3>
+            <p class="text-sm text-slate-600 mt-1 leading-relaxed">Bihar Government Polytechnic Assistant Lecturer (Computer Science &amp; Engg.).</p>
+
+            <div class="grid grid-cols-3 gap-2 my-5 py-3 border-y border-slate-100 text-center">
+              <div>
+                <div class="font-mono font-bold text-sm text-slate-900">10</div>
+                <div class="text-[11px] text-slate-500">Subjects</div>
+              </div>
+              <div class="border-x border-slate-100">
+                <div class="font-mono font-bold text-sm text-slate-900">1,800+</div>
+                <div class="text-[11px] text-slate-500">MCQs</div>
+              </div>
+              <div>
+                <div class="font-mono font-bold text-sm text-slate-900">20+</div>
+                <div class="text-[11px] text-slate-500">Mocks</div>
+              </div>
+            </div>
+
+            <div class="mt-auto grid grid-cols-2 gap-2 text-xs font-semibold">
+              <a href="#subjects" class="py-2 px-3 rounded-lg bg-slate-50 hover:bg-violet-50 text-slate-700 hover:text-violet-700 text-center transition-colors">Syllabus</a>
+              <a href="#resources" class="py-2 px-3 rounded-lg bg-slate-50 hover:bg-violet-50 text-slate-700 hover:text-violet-700 text-center transition-colors">Notes</a>
+              <a href="#resources" class="py-2 px-3 rounded-lg bg-slate-50 hover:bg-violet-50 text-slate-700 hover:text-violet-700 text-center transition-colors">PYQs</a>
+              <a href="#tests" class="py-2 px-3 rounded-lg bg-violet-600 hover:bg-violet-700 text-white text-center transition-colors">Mock Tests</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3: BPSC PGT -->
+        <article class="bg-white rounded-2xl border border-slate-200 shadow-card hover:shadow-card-hover transition-all overflow-hidden flex flex-col">
+          <div class="h-1.5 bg-gradient-to-r from-emerald-500 to-teal-600"></div>
+          <div class="p-6 flex-1 flex flex-col">
+            <div class="flex items-start justify-between gap-3 mb-4">
+              <span class="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              </span>
+              <span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold">Bihar State</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-navy-950">BPSC PGT</h3>
+            <p class="text-sm text-slate-600 mt-1 leading-relaxed">+2 Higher Secondary Computer Science Teacher (TRE) recruitment exam.</p>
+
+            <div class="grid grid-cols-3 gap-2 my-5 py-3 border-y border-slate-100 text-center">
+              <div>
+                <div class="font-mono font-bold text-sm text-slate-900">8</div>
+                <div class="text-[11px] text-slate-500">Subjects</div>
+              </div>
+              <div class="border-x border-slate-100">
+                <div class="font-mono font-bold text-sm text-slate-900">TRE 1–3</div>
+                <div class="text-[11px] text-slate-500">PYQs</div>
+              </div>
+              <div>
+                <div class="font-mono font-bold text-sm text-slate-900">25+</div>
+                <div class="text-[11px] text-slate-500">Mocks</div>
+              </div>
+            </div>
+
+            <div class="mt-auto grid grid-cols-2 gap-2 text-xs font-semibold">
+              <a href="#subjects" class="py-2 px-3 rounded-lg bg-slate-50 hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 text-center transition-colors">Syllabus</a>
+              <a href="#resources" class="py-2 px-3 rounded-lg bg-slate-50 hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 text-center transition-colors">Notes</a>
+              <a href="#resources" class="py-2 px-3 rounded-lg bg-slate-50 hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 text-center transition-colors">PYQs</a>
+              <a href="#tests" class="py-2 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-center transition-colors">Mock Tests</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 4: BPSC TGT -->
+        <article class="bg-white rounded-2xl border border-slate-200 shadow-card hover:shadow-card-hover transition-all overflow-hidden flex flex-col">
+          <div class="h-1.5 bg-gradient-to-r from-amber-500 to-orange-500"></div>
+          <div class="p-6 flex-1 flex flex-col">
+            <div class="flex items-start justify-between gap-3 mb-4">
+              <span class="w-11 h-11 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              </span>
+              <span class="px-2.5 py-1 rounded-full bg-amber-50 text-amber-700 text-xs font-semibold">Bihar State</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-navy-950">BPSC TGT</h3>
+            <p class="text-sm text-slate-600 mt-1 leading-relaxed">Secondary Computer Teacher examination with fundamentals &amp; pedagogy.</p>
+
+            <div class="grid grid-cols-3 gap-2 my-5 py-3 border-y border-slate-100 text-center">
+              <div>
+                <div class="font-mono font-bold text-sm text-slate-900">7</div>
+                <div class="text-[11px] text-slate-500">Subjects</div>
+              </div>
+              <div class="border-x border-slate-100">
+                <div class="font-mono font-bold text-sm text-slate-900">1,500+</div>
+                <div class="text-[11px] text-slate-500">MCQs</div>
+              </div>
+              <div>
+                <div class="font-mono font-bold text-sm text-slate-900">20+</div>
+                <div class="text-[11px] text-slate-500">Mocks</div>
+              </div>
+            </div>
+
+            <div class="mt-auto grid grid-cols-2 gap-2 text-xs font-semibold">
+              <a href="#subjects" class="py-2 px-3 rounded-lg bg-slate-50 hover:bg-amber-50 text-slate-700 hover:text-amber-700 text-center transition-colors">Syllabus</a>
+              <a href="#resources" class="py-2 px-3 rounded-lg bg-slate-50 hover:bg-amber-50 text-slate-700 hover:text-amber-700 text-center transition-colors">Notes</a>
+              <a href="#resources" class="py-2 px-3 rounded-lg bg-slate-50 hover:bg-amber-50 text-slate-700 hover:text-amber-700 text-center transition-colors">PYQs</a>
+              <a href="#tests" class="py-2 px-3 rounded-lg bg-amber-500 hover:bg-amber-600 text-white text-center transition-colors">Mock Tests</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 5. CORE CSE SUBJECTS MATRIX (Interactive Filterable Grid)             -->
+    <!-- ===================================================================== -->
+    <section id="subjects" class="bg-white border-y border-slate-200/80 py-16 sm:py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-brand-600">Curriculum Matrix</span>
+            <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-navy-950 tracking-tight mt-1">Core CSE Subjects</h2>
+            <p class="text-sm sm:text-base text-slate-600 mt-1.5">Master every computer science foundation with structured notes, topic weightage, and practice MCQs.</p>
+          </div>
+
+          <!-- Category Filter Tabs -->
+          <div class="flex flex-wrap gap-2 bg-slate-100 p-1.5 rounded-xl self-start lg:self-auto" role="tablist" aria-label="Filter subjects by category">
+            <button type="button" data-subject-filter="all" class="subject-tab px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-white text-brand-600 shadow-xs transition-all">All Subjects</button>
+            <button type="button" data-subject-filter="core" class="subject-tab px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold text-slate-600 hover:text-slate-900 transition-all">Core CS</button>
+            <button type="button" data-subject-filter="systems" class="subject-tab px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold text-slate-600 hover:text-slate-900 transition-all">Systems &amp; Networks</button>
+            <button type="button" data-subject-filter="maths" class="subject-tab px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold text-slate-600 hover:text-slate-900 transition-all">Engineering Maths</button>
+          </div>
+        </div>
+
+        <!-- 10 Subject Cards Grid (Rendered cleanly via JS for seamless filtering) -->
+        <div id="subjectsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4"></div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 6. POPULAR MOCK TESTS & LATEST EXAM UPDATES (2-Column Dashboard)      -->
+    <!-- ===================================================================== -->
+    <section id="tests" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+        <!-- Left Column: Popular Mock Tests -->
+        <div class="lg:col-span-7 bg-white rounded-2xl border border-slate-200 shadow-card overflow-hidden">
+          <div class="p-6 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <h2 class="font-display font-bold text-xl text-navy-950">Popular Mock Tests</h2>
+              <p class="text-sm text-slate-500 mt-0.5">Real exam pattern with instant analytics and rank prediction.</p>
+            </div>
+            <!-- Exam Filter Tabs -->
+            <div class="inline-flex bg-slate-100 p-1 rounded-xl self-start sm:self-auto">
+              <button type="button" data-test-filter="all" class="test-tab px-3 py-1.5 rounded-lg text-xs font-semibold bg-white text-brand-600 shadow-xs transition-all">All</button>
+              <button type="button" data-test-filter="GATE" class="test-tab px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition-all">GATE</button>
+              <button type="button" data-test-filter="BPSC" class="test-tab px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition-all">BPSC</button>
+            </div>
+          </div>
+
+          <div id="mockTestsList" class="divide-y divide-slate-100"></div>
+        </div>
+
+        <!-- Right Column: Latest Exam Updates + Learning Resources Checklist -->
+        <div class="lg:col-span-5 space-y-6">
+          <!-- Updates Feed -->
+          <div id="updates" class="bg-white rounded-2xl border border-slate-200 shadow-card p-6">
+            <div class="flex items-center justify-between mb-4">
+              <h2 class="font-display font-bold text-lg text-navy-950 flex items-center gap-2">
+                <svg class="w-5 h-5 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                <span>Latest Exam Updates</span>
+              </h2>
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>Live Feed
+              </span>
+            </div>
+
+            <div class="space-y-4">
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-100 hover:border-slate-200 transition-colors">
+                <div class="flex items-center justify-between gap-2 mb-1.5">
+                  <span class="px-2 py-0.5 rounded-md bg-violet-100 text-violet-700 text-[11px] font-bold">BPSC Lecturer</span>
+                  <span class="text-xs font-mono text-slate-400">Nov 2026</span>
+                </div>
+                <p class="text-sm font-semibold text-slate-800">BPSC Polytechnic Lecturer (CSE) — Recruitment &amp; Syllabus Guidelines</p>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-100 hover:border-slate-200 transition-colors">
+                <div class="flex items-center justify-between gap-2 mb-1.5">
+                  <span class="px-2 py-0.5 rounded-md bg-blue-100 text-blue-700 text-[11px] font-bold">GATE CSE</span>
+                  <span class="text-xs font-mono text-slate-400">Nov 2026</span>
+                </div>
+                <p class="text-sm font-semibold text-slate-800">GATE 2027 CSE — Updated Syllabus, Weightage &amp; Mock Series Schedule</p>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-100 hover:border-slate-200 transition-colors">
+                <div class="flex items-center justify-between gap-2 mb-1.5">
+                  <span class="px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-700 text-[11px] font-bold">BPSC PGT / TGT</span>
+                  <span class="text-xs font-mono text-slate-400">Oct 2026</span>
+                </div>
+                <p class="text-sm font-semibold text-slate-800">BPSC TRE Computer Teacher — Topic-wise Revision Sheets &amp; PYQ Pack</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Learning Resources Checklist -->
+          <div id="resources" class="bg-white rounded-2xl border border-slate-200 shadow-card p-6">
+            <h3 id="question-bank" class="font-display font-bold text-lg text-navy-950 mb-4 flex items-center gap-2">
+              <svg class="w-5 h-5 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              <span>Included Learning Resources</span>
+            </h3>
+            <ul class="space-y-3 text-sm text-slate-700">
+              <li class="flex items-center gap-3">
+                <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                <span>Topic-wise structured notes &amp; concept explanations</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                <span>5,000+ MCQ question bank with detailed step-by-step solutions</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                <span>Solved previous-year question papers (GATE &amp; BPSC)</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                <span>Quick-revision formula sheets &amp; complexity cheat sheets</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 7. STRUCTURED LEARNING ROADMAP & WHY BYTECODE                         -->
+    <!-- ===================================================================== -->
+    <section id="study-plan" class="bg-white border-y border-slate-200/80 py-16 sm:py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+
+        <!-- 4-Step Visual Roadmap -->
+        <div>
+          <div class="text-center max-w-2xl mx-auto mb-12">
+            <span class="text-xs font-bold uppercase tracking-widest text-brand-600">Structured Methodology</span>
+            <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-navy-950 tracking-tight mt-1">Your 4-Step Path to Selection</h2>
+            <p class="text-sm sm:text-base text-slate-600 mt-2">Eliminate scattered study materials with a disciplined, exam-oriented workflow.</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 relative">
+              <div class="w-10 h-10 rounded-xl bg-brand-600 text-white font-mono font-bold text-sm flex items-center justify-center mb-4 shadow-sm">01</div>
+              <h3 class="font-display font-bold text-lg text-navy-950">Concept Mastery</h3>
+              <p class="text-sm text-slate-600 mt-2 leading-relaxed">Build rock-solid fundamentals using concise, exam-aligned notes across all 10 CS subjects.</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 relative">
+              <div class="w-10 h-10 rounded-xl bg-brand-600 text-white font-mono font-bold text-sm flex items-center justify-center mb-4 shadow-sm">02</div>
+              <h3 class="font-display font-bold text-lg text-navy-950">Topic-Wise MCQs</h3>
+              <p class="text-sm text-slate-600 mt-2 leading-relaxed">Reinforce every chapter with curated MCQs, MSQs, and NAT questions with detailed solutions.</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 relative">
+              <div class="w-10 h-10 rounded-xl bg-brand-600 text-white font-mono font-bold text-sm flex items-center justify-center mb-4 shadow-sm">03</div>
+              <h3 class="font-display font-bold text-lg text-navy-950">Timed Mock Tests</h3>
+              <p class="text-sm text-slate-600 mt-2 leading-relaxed">Simulate real GATE and BPSC pressure with chapter, subject, and full-length mock tests.</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 relative">
+              <div class="w-10 h-10 rounded-xl bg-brand-600 text-white font-mono font-bold text-sm flex items-center justify-center mb-4 shadow-sm">04</div>
+              <h3 class="font-display font-bold text-lg text-navy-950">Analytics &amp; Revision</h3>
+              <p class="text-sm text-slate-600 mt-2 leading-relaxed">Pinpoint weak topics, review accuracy trends, and revise rapidly with formula sheets.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Why Choose ByteAcademy (4-Card Feature Grid) -->
+        <div>
+          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+            <div>
+              <h2 class="font-display font-extrabold text-2xl text-navy-950 tracking-tight">Why Aspirants Choose ByteAcademy</h2>
+              <p class="text-sm text-slate-600 mt-1">Purpose-built for Computer Science competitive exams.</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-card">
+              <span class="w-10 h-10 rounded-xl bg-indigo-50 text-brand-600 flex items-center justify-center mb-4">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+              </span>
+              <h3 class="font-display font-bold text-base text-navy-950">Complete Coverage</h3>
+              <p class="text-sm text-slate-600 mt-1.5">Syllabus, structured notes, PYQs, and mock tests unified in one platform.</p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-card">
+              <span class="w-10 h-10 rounded-xl bg-cyan-50 text-cyan-600 flex items-center justify-center mb-4">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+              </span>
+              <h3 class="font-display font-bold text-base text-navy-950">Exam-Oriented Tests</h3>
+              <p class="text-sm text-slate-600 mt-1.5">Questions calibrated precisely to GATE CSE and BPSC CSE difficulty levels.</p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-card">
+              <span class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+              </span>
+              <h3 class="font-display font-bold text-base text-navy-950">Performance Analytics</h3>
+              <p class="text-sm text-slate-600 mt-1.5">Track speed, accuracy, and subject-level readiness to turn weaknesses into strengths.</p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-card">
+              <span class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center mb-4">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              </span>
+              <h3 class="font-display font-bold text-base text-navy-950">Structured Study Plans</h3>
+              <p class="text-sm text-slate-600 mt-1.5">Daily, weekly, and monthly milestones designed for both students and working professionals.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 8. RESULTS & SELECTIONS SHOWCASE BANNER                               -->
+    <!-- ===================================================================== -->
+    <section id="results" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="results-mesh rounded-3xl p-8 sm:p-10 lg:p-12 text-white shadow-2xl border border-slate-800">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-4 space-y-2 border-b lg:border-b-0 lg:border-r border-white/15 pb-6 lg:pb-0 lg:pr-8">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-amber-400/15 border border-amber-400/30 text-amber-300 mb-2">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+            </div>
+            <h2 class="font-display font-extrabold text-2xl sm:text-3xl tracking-tight">Our Results</h2>
+            <p class="text-sm text-slate-300 leading-relaxed">Consistent selections across premier national and Bihar state CS examinations.</p>
+          </div>
+
+          <div class="lg:col-span-8 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+            <div class="p-3 rounded-2xl bg-white/5 border border-white/10">
+              <div class="font-mono font-extrabold text-3xl sm:text-4xl text-amber-400">320+</div>
+              <div class="text-sm font-bold text-white mt-1">GATE CSE</div>
+              <div class="text-xs text-slate-400 mt-0.5">Selections</div>
+            </div>
+            <div class="p-3 rounded-2xl bg-white/5 border border-white/10">
+              <div class="font-mono font-extrabold text-3xl sm:text-4xl text-amber-400">115+</div>
+              <div class="text-sm font-bold text-white mt-1">BPSC Lecturer</div>
+              <div class="text-xs text-slate-400 mt-0.5">Selections</div>
+            </div>
+            <div class="p-3 rounded-2xl bg-white/5 border border-white/10">
+              <div class="font-mono font-extrabold text-3xl sm:text-4xl text-amber-400">280+</div>
+              <div class="text-sm font-bold text-white mt-1">BPSC PGT</div>
+              <div class="text-xs text-slate-400 mt-0.5">Selections</div>
+            </div>
+            <div class="p-3 rounded-2xl bg-white/5 border border-white/10">
+              <div class="font-mono font-extrabold text-3xl sm:text-4xl text-amber-400">420+</div>
+              <div class="text-sm font-bold text-white mt-1">BPSC TGT</div>
+              <div class="text-xs text-slate-400 mt-0.5">Selections</div>
+            </div>
+          </div>
+        </div>
+        <p class="text-xs text-slate-400 mt-6 pt-4 border-t border-white/10">
+          * Illustrative design figures shown for preview — replace with verified ByteAcademy selection data prior to production launch.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 9. SUCCESS STORIES (Testimonials) & FREQUENTLY ASKED QUESTIONS        -->
+    <!-- ===================================================================== -->
+    <section id="testimonials" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 space-y-20">
+      <!-- Testimonials -->
+      <div>
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-brand-600">Learner Voices</span>
+            <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-navy-950 tracking-tight mt-1">Success Stories</h2>
+          </div>
+          <a href="#results" class="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 hover:text-brand-700">
+            <span>View All Results</span>
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <article class="bg-white rounded-2xl p-6 border border-slate-200 shadow-card flex flex-col justify-between">
+            <div>
+              <svg class="w-8 h-8 text-brand-100 mb-3" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+              <p class="text-sm sm:text-[15px] text-slate-700 leading-relaxed">
+                “ByteAcademy helped me bring my preparation into a consistent routine. The subject-wise practice and instant explanations made revision dramatically faster.”
+              </p>
+            </div>
+            <div class="flex items-center gap-3 mt-6 pt-4 border-t border-slate-100">
+              <div class="w-10 h-10 rounded-full bg-indigo-100 text-brand-700 font-display font-bold text-sm flex items-center justify-center">AK</div>
+              <div>
+                <div class="text-sm font-bold text-slate-900">Ankit Kumar</div>
+                <div class="text-xs text-slate-500">GATE CSE Aspirant</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-2xl p-6 border border-slate-200 shadow-card flex flex-col justify-between">
+            <div>
+              <svg class="w-8 h-8 text-brand-100 mb-3" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+              <p class="text-sm sm:text-[15px] text-slate-700 leading-relaxed">
+                “The structured syllabus and topic-based questions helped me identify weak areas in OS and DBMS early on. Everything is clean and distraction-free.”
+              </p>
+            </div>
+            <div class="flex items-center gap-3 mt-6 pt-4 border-t border-slate-100">
+              <div class="w-10 h-10 rounded-full bg-violet-100 text-violet-700 font-display font-bold text-sm flex items-center justify-center">PS</div>
+              <div>
+                <div class="text-sm font-bold text-slate-900">Priya Singh</div>
+                <div class="text-xs text-slate-500">BPSC Lecturer (CSE) Aspirant</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-2xl p-6 border border-slate-200 shadow-card flex flex-col justify-between">
+            <div>
+              <svg class="w-8 h-8 text-brand-100 mb-3" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+              <p class="text-sm sm:text-[15px] text-slate-700 leading-relaxed">
+                “Having notes, mock tests, and previous-year papers together made my study sessions far more organised while preparing for BPSC PGT.”
+              </p>
+            </div>
+            <div class="flex items-center gap-3 mt-6 pt-4 border-t border-slate-100">
+              <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 font-display font-bold text-sm flex items-center justify-center">RV</div>
+              <div>
+                <div class="text-sm font-bold text-slate-900">Rahul Verma</div>
+                <div class="text-xs text-slate-500">BPSC PGT / TGT Aspirant</div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- FAQs (2-Column Accessible Accordion) -->
+      <div id="faqs">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span class="text-xs font-bold uppercase tracking-widest text-brand-600">Support</span>
+          <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-navy-950 tracking-tight mt-1">Frequently Asked Questions</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <details class="group bg-white rounded-2xl border border-slate-200 shadow-xs open:shadow-card transition-all">
+            <summary class="flex items-center justify-between gap-4 p-5 cursor-pointer font-semibold text-sm sm:text-[15px] text-navy-950">
+              <span>Which examinations does ByteAcademy cover?</span>
+              <svg class="w-5 h-5 text-slate-400 shrink-0 faq-chevron transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-slate-600 leading-relaxed">
+              ByteAcademy is designed specifically for GATE CSE and Bihar Public Service Commission (BPSC) Computer Science examinations, including Polytechnic Assistant Lecturer, PGT (+2 Computer Teacher), and TGT (Secondary Computer Teacher).
+            </div>
+          </details>
+
+          <details class="group bg-white rounded-2xl border border-slate-200 shadow-xs open:shadow-card transition-all">
+            <summary class="flex items-center justify-between gap-4 p-5 cursor-pointer font-semibold text-sm sm:text-[15px] text-navy-950">
+              <span>Can I study subject by subject?</span>
+              <svg class="w-5 h-5 text-slate-400 shrink-0 faq-chevron transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-slate-600 leading-relaxed">
+              Yes. The platform organises all 10 core Computer Science subjects with dedicated notes, topic weightage, question banks, and subject-wise practice tests so you can learn systematically.
+            </div>
+          </details>
+
+          <details class="group bg-white rounded-2xl border border-slate-200 shadow-xs open:shadow-card transition-all">
+            <summary class="flex items-center justify-between gap-4 p-5 cursor-pointer font-semibold text-sm sm:text-[15px] text-navy-950">
+              <span>Are mock tests and previous-year questions included?</span>
+              <svg class="w-5 h-5 text-slate-400 shrink-0 faq-chevron transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-slate-600 leading-relaxed">
+              Yes. ByteAcademy includes full-length mock tests, subject-wise tests, chapter-wise drills, and solved previous-year question archives for both GATE CSE and BPSC CSE exams.
+            </div>
+          </details>
+
+          <details class="group bg-white rounded-2xl border border-slate-200 shadow-xs open:shadow-card transition-all">
+            <summary class="flex items-center justify-between gap-4 p-5 cursor-pointer font-semibold text-sm sm:text-[15px] text-navy-950">
+              <span>Can I track my preparation and weak areas?</span>
+              <svg class="w-5 h-5 text-slate-400 shrink-0 faq-chevron transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-slate-600 leading-relaxed">
+              Progress tracking and performance analytics are built into the student account experience, allowing you to monitor accuracy, completion rates, and test scores over time.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 10. FINAL CTA BANNER                                                  -->
+    <!-- ===================================================================== -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="rounded-3xl bg-gradient-to-r from-navy-950 via-brand-700 to-indigo-600 p-8 sm:p-12 text-white shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div class="max-w-xl">
+          <h2 class="font-display font-extrabold text-2xl sm:text-3xl tracking-tight">Ready to level up your preparation?</h2>
+          <p class="text-sm sm:text-base text-indigo-100 mt-2">Learn with focus. Practise with purpose. Join aspirants preparing smarter for GATE &amp; BPSC CSE.</p>
+        </div>
+        <button type="button" data-modal="signup"
+          class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-navy-950 font-bold text-sm sm:text-base shadow-lg transition-all hover:-translate-y-0.5 shrink-0">
+          <span>Create Your Account</span>
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- MODERN MULTI-COLUMN FOOTER                                            -->
+  <!-- ===================================================================== -->
+  <footer class="bg-navy-950 text-slate-300 border-t border-slate-800/80 mt-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-slate-800">
+        <!-- Brand Info -->
+        <div class="lg:col-span-4 space-y-4">
+          <div class="flex items-center gap-2.5">
+            <span class="w-9 h-9 rounded-lg bg-brand-600 text-white flex items-center justify-center">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>
+            </span>
+            <div>
+              <div class="font-display font-extrabold text-xl text-white leading-none">ByteAcademy</div>
+              <div class="text-[10px] tracking-[0.14em] text-slate-400 font-semibold mt-1">LEARN · PRACTISE · LEVEL UP</div>
+            </div>
+          </div>
+          <p class="text-sm text-slate-400 leading-relaxed max-w-sm">
+            A focused Computer Science preparation platform for GATE CSE, BPSC Lecturer, PGT, TGT, and competitive technical examinations.
+          </p>
+          <div class="flex items-center gap-2.5 pt-1">
+            <a href="#" aria-label="YouTube" class="w-9 h-9 rounded-lg bg-slate-800 hover:bg-brand-600 text-slate-300 hover:text-white flex items-center justify-center transition-colors">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+            </a>
+            <a href="#" aria-label="Telegram" class="w-9 h-9 rounded-lg bg-slate-800 hover:bg-brand-600 text-slate-300 hover:text-white flex items-center justify-center transition-colors">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </a>
+            <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-lg bg-slate-800 hover:bg-brand-600 text-slate-300 hover:text-white flex items-center justify-center transition-colors">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" aria-label="LinkedIn" class="w-9 h-9 rounded-lg bg-slate-800 hover:bg-brand-600 text-slate-300 hover:text-white flex items-center justify-center transition-colors">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="lg:col-span-2">
+          <h4 class="font-display font-bold text-sm text-white uppercase tracking-wider mb-4">Quick Links</h4>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="#home" class="hover:text-white transition-colors">Home</a></li>
+            <li><a href="#exams" class="hover:text-white transition-colors">Examinations</a></li>
+            <li><a href="#subjects" class="hover:text-white transition-colors">CSE Subjects</a></li>
+            <li><a href="#results" class="hover:text-white transition-colors">Our Results</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources -->
+        <div class="lg:col-span-2">
+          <h4 class="font-display font-bold text-sm text-white uppercase tracking-wider mb-4">Resources</h4>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="#subjects" class="hover:text-white transition-colors">Syllabus</a></li>
+            <li><a href="#resources" class="hover:text-white transition-colors">Study Notes</a></li>
+            <li><a href="#question-bank" class="hover:text-white transition-colors">Question Bank</a></li>
+            <li><a href="#resources" class="hover:text-white transition-colors">Previous Papers</a></li>
+          </ul>
+        </div>
+
+        <!-- Practice -->
+        <div class="lg:col-span-2">
+          <h4 class="font-display font-bold text-sm text-white uppercase tracking-wider mb-4">Practice</h4>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="#tests" class="hover:text-white transition-colors">Mock Tests</a></li>
+            <li><a href="#tests" class="hover:text-white transition-colors">Chapter Tests</a></li>
+            <li><a href="#tests" class="hover:text-white transition-colors">Subject Tests</a></li>
+            <li><a href="#study-plan" class="hover:text-white transition-colors">Study Plans</a></li>
+          </ul>
+        </div>
+
+        <!-- Support -->
+        <div class="lg:col-span-2">
+          <h4 class="font-display font-bold text-sm text-white uppercase tracking-wider mb-4">Support</h4>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="#faqs" class="hover:text-white transition-colors">FAQs</a></li>
+            <li><a href="mailto:support@bytecode.in" class="hover:text-white transition-colors">Contact Us</a></li>
+            <li><a href="mailto:support@bytecode.in" class="hover:text-white transition-colors">Report an Issue</a></li>
+            <li>
+              <a href="mailto:support@bytecode.in" class="inline-flex items-center gap-1.5 text-indigo-300 hover:text-indigo-200 font-medium pt-1">
+                <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                <span>support@bytecode.in</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+        <div>© <span id="year"></span> ByteAcademy. All Rights Reserved.</div>
+        <div class="flex items-center gap-6">
+          <a href="#faqs" class="hover:text-white transition-colors">Privacy Policy</a>
+          <a href="#faqs" class="hover:text-white transition-colors">Terms of Use</a>
+          <a href="#faqs" class="hover:text-white transition-colors">Disclaimer</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================================================================== -->
+  <!-- 11. COMMAND SEARCH MODAL (Cmd/Ctrl + K)                               -->
+  <!-- ===================================================================== -->
+  <div id="searchModal" class="hidden fixed inset-0 z-50 bg-navy-950/60 backdrop-blur-xs flex items-start justify-center pt-16 sm:pt-24 px-4">
+    <div class="bg-white w-full max-w-xl rounded-2xl border border-slate-200 shadow-2xl overflow-hidden animate-dropdown">
+      <div class="flex items-center gap-3 px-4 py-3.5 border-b border-slate-200">
+        <svg class="w-5 h-5 text-slate-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input id="commandSearchInput" type="text" placeholder="Search exams, subjects, mock tests, or study notes..."
+          class="w-full text-sm sm:text-base text-slate-900 placeholder:text-slate-400 focus:outline-none" autocomplete="off" />
+        <button id="closeSearchBtn" type="button" class="px-2 py-1 rounded-md bg-slate-100 hover:bg-slate-200 text-xs font-mono font-semibold text-slate-500">ESC</button>
+      </div>
+      <div id="searchResultsList" class="max-h-80 overflow-y-auto p-2 divide-y divide-slate-100"></div>
+      <div class="px-4 py-2.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+        <span>Type to filter across ByteAcademy</span>
+        <span class="font-mono">⌘K / Ctrl+K</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MOCK TEST INSTRUCTIONS PREVIEW MODAL                                  -->
+  <!-- ===================================================================== -->
+  <div id="testModal" class="hidden fixed inset-0 z-50 bg-navy-950/60 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white w-full max-w-lg rounded-2xl border border-slate-200 shadow-2xl p-6 relative animate-dropdown">
+      <button id="closeTestModal" type="button" aria-label="Close modal" class="absolute top-4 right-4 w-8 h-8 rounded-lg hover:bg-slate-100 flex items-center justify-center text-slate-500">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <span id="tmBadge" class="inline-block px-2.5 py-1 rounded-md bg-brand-50 text-brand-700 text-xs font-bold mb-2">GATE CSE</span>
+      <h3 id="tmTitle" class="font-display font-bold text-xl text-navy-950 pr-6">Mock Test Title</h3>
+
+      <div class="grid grid-cols-3 gap-3 my-5 p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 text-center">
+        <div>
+          <div id="tmDuration" class="font-mono font-bold text-base text-navy-950">180 Mins</div>
+          <div class="text-xs text-slate-500">Duration</div>
+        </div>
+        <div class="border-x border-slate-200">
+          <div id="tmQuestions" class="font-mono font-bold text-base text-navy-950">65 Qs</div>
+          <div class="text-xs text-slate-500">Questions</div>
+        </div>
+        <div>
+          <div id="tmDifficulty" class="font-mono font-bold text-base text-amber-600">Standard</div>
+          <div class="text-xs text-slate-500">Difficulty</div>
+        </div>
+      </div>
+
+      <div class="space-y-2 text-sm text-slate-600 mb-6">
+        <div class="font-semibold text-slate-900">Test Instructions:</div>
+        <ul class="list-disc pl-5 space-y-1.5 text-xs sm:text-sm">
+          <li>Questions include Multiple Choice (MCQ) and Numerical Answer Type (NAT).</li>
+          <li>Timer starts automatically once you begin the test session.</li>
+          <li>Detailed solutions and topic-wise analytics unlock immediately after submission.</li>
+        </ul>
+      </div>
+
+      <div class="flex items-center justify-end gap-3">
+        <button id="cancelTestBtn" type="button" class="px-4 py-2.5 rounded-xl border border-slate-300 text-sm font-semibold text-slate-700 hover:bg-slate-50">Cancel</button>
+        <button id="launchTestBtn" type="button" class="px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold shadow-sm">Start Test Now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- AUTHENTICATION MODAL (Login / Phone OTP / Recovery / Full Sign Up)    -->
+  <!-- ===================================================================== -->
+  <div id="authModal" class="hidden fixed inset-0 z-50 bg-navy-950/65 backdrop-blur-xs flex items-center justify-center p-4 overflow-hidden">
+    <div class="bg-white w-full max-w-md max-h-[92vh] max-h-[92dvh] overflow-y-auto overscroll-contain rounded-2xl border border-slate-200 shadow-2xl p-6 sm:p-7 relative animate-dropdown">
+      <button id="closeAuthModal" type="button" aria-label="Close modal" class="absolute top-4 right-4 w-8 h-8 rounded-lg hover:bg-slate-100 flex items-center justify-center text-slate-500">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <!-- Brand Mark -->
+      <div class="flex items-center gap-2.5 mb-5">
+        <span class="w-9 h-9 rounded-lg bg-navy-950 text-white flex items-center justify-center">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>
+        </span>
+        <div>
+          <div class="font-display font-extrabold text-lg text-navy-950 leading-none">ByteAcademy</div>
+          <div class="text-[10px] font-bold tracking-widest text-slate-500 mt-0.5">LEARN · PRACTISE · LEVEL UP</div>
+        </div>
+      </div>
+
+      <!-- VIEW 1: LOGIN -->
+      <div id="authMain">
+        <h3 class="font-display font-bold text-2xl text-navy-950">Welcome back</h3>
+        <p class="text-sm text-slate-500 mt-1 mb-5">Login to continue your GATE &amp; BPSC preparation.</p>
+
+        <!-- Login Tabs -->
+        <div class="grid grid-cols-2 gap-1 p-1 rounded-xl bg-slate-100 mb-5" role="tablist">
+          <button type="button" data-login-tab="username" class="login-tab py-2 rounded-lg text-xs sm:text-sm font-semibold bg-white text-brand-600 shadow-xs transition-all">Username</button>
+          <button type="button" data-login-tab="phone" class="login-tab py-2 rounded-lg text-xs sm:text-sm font-semibold text-slate-600 hover:text-slate-900 transition-all">Phone Number</button>
+        </div>
+
+        <!-- Username Login Form -->
+        <form id="usernameLogin" class="space-y-4">
+          <div>
+            <label for="loginUsername" class="block text-xs font-semibold text-slate-700 mb-1.5">Username</label>
+            <input id="loginUsername" type="text" placeholder="Enter your username" autocomplete="username" required
+              class="w-full h-11 px-3.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/15" />
+          </div>
+          <div>
+            <label for="loginPassword" class="block text-xs font-semibold text-slate-700 mb-1.5">Password</label>
+            <div class="relative">
+              <input id="loginPassword" type="password" placeholder="Enter your password" autocomplete="current-password" required
+                class="w-full h-11 pl-3.5 pr-14 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/15" />
+              <button type="button" data-toggle-password="loginPassword" class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-brand-600 hover:text-brand-700">Show</button>
+            </div>
+          </div>
+          <div class="flex items-center justify-between text-xs font-semibold">
+            <a href="#" data-auth-view="forgot-password" class="text-brand-600 hover:underline">Forgot password?</a>
+            <a href="#" data-auth-view="forgot-username" class="text-brand-600 hover:underline">Forgot username?</a>
+          </div>
+          <button type="submit" class="w-full h-11 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold shadow-sm transition-colors">
+            Login with Username
+          </button>
+        </form>
+
+        <!-- Phone OTP Login Form -->
+        <form id="phoneLogin" class="space-y-4 hidden">
+          <div>
+            <label for="loginPhone" class="block text-xs font-semibold text-slate-700 mb-1.5">Phone Number</label>
+            <div class="flex items-center h-11 rounded-xl border border-slate-300 px-3 focus-within:border-brand-600 focus-within:ring-2 focus-within:ring-brand-600/15">
+              <span class="text-xs font-bold text-slate-600 pr-2.5 border-r border-slate-200 mr-2.5">+91</span>
+              <input id="loginPhone" type="tel" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" placeholder="10-digit mobile number" required
+                class="w-full text-sm focus:outline-none" />
+            </div>
+            <p class="text-xs text-slate-500 mt-2">We will send a one-time password (OTP) to your registered mobile number.</p>
+          </div>
+          <button type="submit" class="w-full h-11 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold shadow-sm transition-colors">
+            Continue with Phone OTP
+          </button>
+        </form>
+
+        <div class="flex items-center gap-3 my-5">
+          <div class="h-px bg-slate-200 flex-1"></div>
+          <span class="text-xs font-semibold text-slate-400">OR</span>
+          <div class="h-px bg-slate-200 flex-1"></div>
+        </div>
+
+        <button id="googleLogin" type="button" class="w-full h-11 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-800 text-sm font-semibold flex items-center justify-center gap-2.5 transition-colors">
+          <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.79-.07-1.54-.19-2.27h-11.3v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"/><path fill="#34A853" d="M12.255 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96h-3.98v3.09C3.515 21.3 7.565 24 12.255 24z"/><path fill="#FBBC05" d="M5.525 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62h-3.98a11.86 11.86 0 0 0 0 10.76l3.98-3.09z"/><path fill="#EA4335" d="M12.255 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C18.205 1.19 15.495 0 12.255 0c-4.69 0-8.74 2.7-10.71 6.62l3.98 3.09c.95-2.85 3.6-4.96 6.73-4.96z"/></svg>
+          <span>Continue with Google</span>
+        </button>
+
+        <p class="text-center text-sm text-slate-600 mt-5">
+          New to ByteAcademy? <a href="#" id="switchSignup" class="font-bold text-brand-600 hover:underline">Create an account</a>
+        </p>
+      </div>
+
+      <!-- VIEW 2: ACCOUNT RECOVERY -->
+      <div id="authRecovery" class="hidden">
+        <h3 id="recoveryTitle" class="font-display font-bold text-2xl text-navy-950">Reset your password</h3>
+        <p id="recoveryDesc" class="text-sm text-slate-500 mt-1 mb-5">Enter your registered email or phone number to continue.</p>
+        <form id="recoveryForm" class="space-y-4">
+          <div>
+            <label id="recoveryLabel" for="recoveryInput" class="block text-xs font-semibold text-slate-700 mb-1.5">Registered email or phone number</label>
+            <input id="recoveryInput" type="text" placeholder="Email address or 10-digit phone" required
+              class="w-full h-11 px-3.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/15" />
+          </div>
+          <button id="recoverySubmit" type="submit" class="w-full h-11 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold shadow-sm transition-colors">
+            Send Reset Link / OTP
+          </button>
+        </form>
+        <button id="backToLogin" type="button" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 hover:underline">
+          ← Back to Login
+        </button>
+      </div>
+
+      <!-- VIEW 3: EXPANDED STUDENT REGISTRATION -->
+      <div id="signupView" class="hidden">
+        <div class="text-[11px] font-bold uppercase tracking-widest text-brand-600 mb-1">Start Your Journey</div>
+        <h3 class="font-display font-bold text-2xl text-navy-950">Create Student Account</h3>
+        <p class="text-sm text-slate-500 mt-1 mb-4">Set up your profile and select your target examination.</p>
+
+        <button id="googleSignup" type="button" class="w-full h-11 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-800 text-sm font-semibold flex items-center justify-center gap-2.5 transition-colors">
+          <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.79-.07-1.54-.19-2.27h-11.3v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"/><path fill="#34A853" d="M12.255 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96h-3.98v3.09C3.515 21.3 7.565 24 12.255 24z"/><path fill="#FBBC05" d="M5.525 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62h-3.98a11.86 11.86 0 0 0 0 10.76l3.98-3.09z"/><path fill="#EA4335" d="M12.255 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C18.205 1.19 15.495 0 12.255 0c-4.69 0-8.74 2.7-10.71 6.62l3.98 3.09c.95-2.85 3.6-4.96 6.73-4.96z"/></svg>
+          <span>Sign up with Google</span>
+        </button>
+
+        <div class="flex items-center gap-3 my-4">
+          <div class="h-px bg-slate-200 flex-1"></div>
+          <span class="text-[11px] font-semibold text-slate-400">OR REGISTER WITH EMAIL</span>
+          <div class="h-px bg-slate-200 flex-1"></div>
+        </div>
+
+        <form id="signupForm" class="space-y-3.5">
+          <div>
+            <label for="signupName" class="block text-xs font-semibold text-slate-700 mb-1">Full Name</label>
+            <input id="signupName" type="text" autocomplete="name" placeholder="Enter your full name" required
+              class="w-full h-10 px-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/15" />
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label for="signupUsername" class="block text-xs font-semibold text-slate-700 mb-1">Username</label>
+              <input id="signupUsername" type="text" autocomplete="username" minlength="4" maxlength="20" pattern="[A-Za-z0-9_]{4,20}" placeholder="e.g. ankit_cse27" required
+                class="w-full h-10 px-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/15" />
+            </div>
+            <div>
+              <label for="signupPhone" class="block text-xs font-semibold text-slate-700 mb-1">Phone Number</label>
+              <div class="flex items-center h-10 rounded-xl border border-slate-300 px-2.5 focus-within:border-brand-600 focus-within:ring-2 focus-within:ring-brand-600/15">
+                <span class="text-xs font-bold text-slate-600 pr-2 border-r border-slate-200 mr-2">+91</span>
+                <input id="signupPhone" type="tel" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" placeholder="10 digits" required
+                  class="w-full text-sm focus:outline-none min-w-0" />
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label for="signupEmail" class="block text-xs font-semibold text-slate-700 mb-1">Email Address</label>
+            <input id="signupEmail" type="email" autocomplete="email" placeholder="you@example.com" required
+              class="w-full h-10 px-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/15" />
+          </div>
+
+          <div>
+            <label for="signupExam" class="block text-xs font-semibold text-slate-700 mb-1">Target Examination</label>
+            <select id="signupExam" required
+              class="w-full h-10 px-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-800 focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/15">
+              <option value="" selected disabled>Select your target examination</option>
+              <option value="GATE_CSE">GATE CSE</option>
+              <option value="BPSC_LECTURER">BPSC Polytechnic Assistant Lecturer (CSE)</option>
+              <option value="BPSC_PGT">BPSC PGT / +2 Computer Teacher</option>
+              <option value="BPSC_TGT">BPSC TGT (Secondary Computer Teacher)</option>
+              <option value="MULTIPLE">Preparing for multiple examinations</option>
+            </select>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label for="signupPassword" class="block text-xs font-semibold text-slate-700 mb-1">Create Password</label>
+              <div class="relative">
+                <input id="signupPassword" type="password" autocomplete="new-password" minlength="8" placeholder="8+ characters" required
+                  class="w-full h-10 pl-3 pr-12 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/15" />
+                <button type="button" data-toggle-password="signupPassword" class="absolute right-2.5 top-1/2 -translate-y-1/2 text-[11px] font-bold text-brand-600">Show</button>
+              </div>
+              <div class="mt-1.5 h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+                <div id="strengthBar" class="h-full w-0 bg-amber-500 transition-all duration-200"></div>
+              </div>
+              <p id="strengthLabel" class="text-[11px] text-slate-500 mt-1">Use 8+ chars with letters &amp; numbers</p>
+            </div>
+            <div>
+              <label for="signupConfirmPassword" class="block text-xs font-semibold text-slate-700 mb-1">Confirm Password</label>
+              <div class="relative">
+                <input id="signupConfirmPassword" type="password" autocomplete="new-password" minlength="8" placeholder="Re-enter password" required
+                  class="w-full h-10 pl-3 pr-12 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/15" />
+                <button type="button" data-toggle-password="signupConfirmPassword" class="absolute right-2.5 top-1/2 -translate-y-1/2 text-[11px] font-bold text-brand-600">Show</button>
+              </div>
+              <p id="passwordMatchHint" class="text-[11px] text-slate-500 mt-1.5">Re-enter the same password.</p>
+            </div>
+          </div>
+
+          <label class="flex items-start gap-2.5 pt-1 cursor-pointer">
+            <input id="signupTerms" type="checkbox" required class="mt-0.5 w-4 h-4 rounded border-slate-300 text-brand-600 focus:ring-brand-500" />
+            <span class="text-xs text-slate-600 leading-relaxed">I agree to ByteAcademy's <a href="#faqs" class="font-semibold text-brand-600 hover:underline">Terms of Use</a> and <a href="#faqs" class="font-semibold text-brand-600 hover:underline">Privacy Policy</a>.</span>
+          </label>
+
+          <button type="submit" class="w-full h-11 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold shadow-sm transition-colors">
+            Create Student Account →
+          </button>
+        </form>
+
+        <p class="text-center text-sm text-slate-600 mt-4">
+          Already registered? <a href="#" id="switchLogin" class="font-bold text-brand-600 hover:underline">Login</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- TOAST NOTIFICATION                                                    -->
+  <!-- ===================================================================== -->
+  <div id="toast" role="status" aria-live="polite"
+    class="fixed bottom-5 left-1/2 -translate-x-1/2 translate-y-4 opacity-0 pointer-events-none transition-all duration-200 z-50 bg-navy-950 text-white px-4 py-3 rounded-xl shadow-xl border border-slate-700 flex items-center gap-2.5 text-sm font-medium max-w-[90vw]">
+    <span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span>
+    <span id="toastMsg">Notification</span>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- APPLICATION JAVASCRIPT                                                -->
+  <!-- ===================================================================== -->
+  <script>
+    (function () {
+      'use strict';
+
+      // Set dynamic footer year
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // ===================================================================
+      // 1. TOAST NOTIFICATION SYSTEM
+      // ===================================================================
+      const toastEl = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      let toastTimer;
+
+      function notify(message) {
+        toastMsg.textContent = message;
+        toastEl.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+        toastEl.classList.add('opacity-100', 'translate-y-0');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          toastEl.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+          toastEl.classList.remove('opacity-100', 'translate-y-0');
+        }, 3000);
+      }
+
+      // ===================================================================
+      // 2. DESKTOP DROPDOWNS & MOBILE DRAWER NAVIGATION
+      // ===================================================================
+      const desktopNav = document.getElementById('desktopNav');
+
+      function closeDesktopDropdowns(exceptGroup = null) {
+        desktopNav.querySelectorAll('.nav-group').forEach(group => {
+          if (group !== exceptGroup) {
+            group.querySelector('.nav-dropdown')?.classList.add('hidden');
+            group.querySelector('.nav-trigger')?.setAttribute('aria-expanded', 'false');
+            group.querySelector('.nav-chevron')?.classList.remove('rotate-180', 'text-brand-600');
+          }
+        });
+      }
+
+      desktopNav.querySelectorAll('.nav-trigger').forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const group = trigger.closest('.nav-group');
+          const dropdown = group.querySelector('.nav-dropdown');
+          const isOpen = !dropdown.classList.contains('hidden');
+          closeDesktopDropdowns(group);
+          dropdown.classList.toggle('hidden', isOpen);
+          trigger.setAttribute('aria-expanded', String(!isOpen));
+          group.querySelector('.nav-chevron')?.classList.toggle('rotate-180', !isOpen);
+          group.querySelector('.nav-chevron')?.classList.toggle('text-brand-600', !isOpen);
+        });
+      });
+
+      desktopNav.querySelectorAll('.nav-dropdown a').forEach(link => {
+        link.addEventListener('click', () => closeDesktopDropdowns());
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!desktopNav.contains(e.target)) closeDesktopDropdowns();
+      });
+
+      // Mobile Drawer
+      const mobileOverlay = document.getElementById('mobileOverlay');
+      const mobileDrawer = document.getElementById('mobileDrawer');
+
+      function openMobileMenu() {
+        mobileOverlay.classList.remove('opacity-0', 'pointer-events-none');
+        mobileOverlay.setAttribute('aria-hidden', 'false');
+        mobileDrawer.classList.remove('translate-x-full');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMobileMenu() {
+        mobileOverlay.classList.add('opacity-0', 'pointer-events-none');
+        mobileOverlay.setAttribute('aria-hidden', 'true');
+        mobileDrawer.classList.add('translate-x-full');
+        document.body.style.overflow = '';
+      }
+
+      document.getElementById('menuBtn').addEventListener('click', openMobileMenu);
+      document.getElementById('drawerClose').addEventListener('click', closeMobileMenu);
+      mobileOverlay.addEventListener('click', (e) => {
+        if (e.target === mobileOverlay) closeMobileMenu();
+      });
+
+      document.querySelectorAll('.drawer-toggle').forEach(toggle => {
+        toggle.addEventListener('click', () => {
+          const group = toggle.closest('.drawer-group');
+          const submenu = group.querySelector('.drawer-submenu');
+          const indicator = toggle.querySelector('.drawer-indicator');
+          const isOpen = !submenu.classList.contains('hidden');
+
+          document.querySelectorAll('.drawer-group').forEach(other => {
+            if (other !== group) {
+              other.querySelector('.drawer-submenu')?.classList.add('hidden');
+              other.querySelector('.drawer-toggle')?.setAttribute('aria-expanded', 'false');
+              const otherIndicator = other.querySelector('.drawer-indicator');
+              if (otherIndicator) otherIndicator.textContent = '+';
+            }
+          });
+
+          submenu.classList.toggle('hidden', isOpen);
+          toggle.setAttribute('aria-expanded', String(!isOpen));
+          if (indicator) indicator.textContent = isOpen ? '+' : '-';
+        });
+      });
+
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
+      });
+
+      // ===================================================================
+      // 3. HERO LIVE DAILY PRACTICE PROBLEM (DPP) WIDGET
+      // ===================================================================
+      const dppData = [
+        {
+          subject: 'Data Structures & Algorithms',
+          exam: 'GATE CSE',
+          difficulty: 'Medium',
+          question: 'What is the worst-case time complexity of building a binary max-heap from an unsorted array of n elements using the standard bottom-up Heapify algorithm?',
+          options: ['O(n log n)', 'O(n)', 'O(log n)', 'O(n²)'],
+          correctIndex: 1,
+          explanation: 'Although a single Heapify takes O(log n), most nodes are near the leaves and require very few swaps. Summing work across all levels yields a tight upper bound of O(n).'
+        },
+        {
+          subject: 'Operating Systems',
+          exam: 'BPSC Lecturer',
+          difficulty: 'Medium',
+          question: 'Which CPU scheduling algorithm can suffer from the "Convoy Effect", where short I/O-bound processes wait behind a long CPU-bound process?',
+          options: ['Shortest Job First (SJF)', 'Round Robin (RR)', 'First-Come, First-Served (FCFS)', 'Multilevel Feedback Queue'],
+          correctIndex: 2,
+          explanation: 'In non-preemptive FCFS scheduling, if a long CPU-bound process arrives first, all shorter processes queue behind it, lowering CPU and device utilization—known as the Convoy Effect.'
+        },
+        {
+          subject: 'Database Management Systems',
+          exam: 'GATE CSE / BPSC PGT',
+          difficulty: 'Hard',
+          question: 'A relation R(A, B, C, D) has functional dependencies {A → B, B → C, C → D}. What is the highest normal form satisfied by R?',
+          options: ['1NF only', '2NF only', '3NF', 'BCNF'],
+          correctIndex: 1,
+          explanation: 'The only candidate key is A. Since A is a single attribute, there are no partial dependencies (so R is in 2NF). However, B → C and C → D are transitive dependencies on non-prime attributes, violating 3NF.'
+        }
+      ];
+
+      let dppIndex = 0;
+      let dppScore = 0;
+      const dppAnswered = [false, false, false];
+
+      const dppSubject = document.getElementById('dppSubject');
+      const dppExamTag = document.getElementById('dppExamTag');
+      const dppDifficulty = document.getElementById('dppDifficulty');
+      const dppCounter = document.getElementById('dppCounter');
+      const dppQuestion = document.getElementById('dppQuestion');
+      const dppOptions = document.getElementById('dppOptions');
+      const dppExplanation = document.getElementById('dppExplanation');
+      const dppFeedbackTitle = document.getElementById('dppFeedbackTitle');
+      const dppExplanationText = document.getElementById('dppExplanationText');
+      const dppScoreEl = document.getElementById('dppScore');
+      const dppNextBtn = document.getElementById('dppNextBtn');
+
+      function renderDPP() {
+        const item = dppData[dppIndex];
+        dppSubject.textContent = item.subject;
+        dppExamTag.textContent = item.exam;
+        dppDifficulty.textContent = item.difficulty;
+        dppCounter.textContent = `${dppIndex + 1} / ${dppData.length}`;
+        dppQuestion.textContent = item.question;
+        dppExplanation.classList.add('hidden');
+        dppOptions.innerHTML = '';
+
+        const labels = ['A', 'B', 'C', 'D'];
+        item.options.forEach((optText, idx) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'w-full text-left px-3.5 py-2.5 rounded-xl bg-slate-800/70 hover:bg-slate-800 border border-slate-700/80 text-sm text-slate-200 flex items-center gap-3 transition-all';
+          btn.innerHTML = `<span class="w-6 h-6 rounded-md bg-slate-700 text-slate-200 font-mono text-xs font-bold flex items-center justify-center shrink-0">${labels[idx]}</span><span>${optText}</span>`;
+
+          btn.addEventListener('click', () => handleDPPAnswer(idx));
+          dppOptions.appendChild(btn);
+        });
+      }
+
+      function handleDPPAnswer(selectedIdx) {
+        const item = dppData[dppIndex];
+        const buttons = dppOptions.querySelectorAll('button');
+        const isCorrect = selectedIdx === item.correctIndex;
+
+        if (!dppAnswered[dppIndex]) {
+          dppAnswered[dppIndex] = true;
+          if (isCorrect) {
+            dppScore++;
+            dppScoreEl.textContent = dppScore;
+          }
+        }
+
+        buttons.forEach((btn, idx) => {
+          btn.disabled = true;
+          btn.classList.remove('hover:bg-slate-800');
+          if (idx === item.correctIndex) {
+            btn.className = 'w-full text-left px-3.5 py-2.5 rounded-xl bg-emerald-500/20 border border-emerald-500/60 text-sm text-emerald-100 flex items-center gap-3';
+          } else if (idx === selectedIdx && !isCorrect) {
+            btn.className = 'w-full text-left px-3.5 py-2.5 rounded-xl bg-rose-500/20 border border-rose-500/60 text-sm text-rose-100 flex items-center gap-3';
+          } else {
+            btn.classList.add('opacity-50');
+          }
+        });
+
+        dppFeedbackTitle.textContent = isCorrect ? '✓ Correct Answer!' : '✗ Incorrect — Review Explanation';
+        dppFeedbackTitle.className = isCorrect ? 'font-bold text-emerald-400 mb-1' : 'font-bold text-rose-400 mb-1';
+        dppExplanationText.textContent = item.explanation;
+        dppExplanation.classList.remove('hidden');
+      }
+
+      dppNextBtn.addEventListener('click', () => {
+        dppIndex = (dppIndex + 1) % dppData.length;
+        renderDPP();
+      });
+
+      renderDPP();
+
+      // ===================================================================
+      // 4. CORE CSE SUBJECTS MATRIX (FILTERABLE)
+      // ===================================================================
+      const subjectsData = [
+        { name: 'DSA', full: 'Data Structures & Algorithms', category: 'core', topics: 18, mcqs: 720, weightage: 'High Weightage', color: 'text-blue-600 bg-blue-50', icon: '<circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="18" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="m10.8 7.2-4.5 8.5m6.9-8.5 4.5 8.5M7.5 18h9"/>' },
+        { name: 'TOC', full: 'Theory of Computation', category: 'core', topics: 12, mcqs: 480, weightage: 'High Weightage', color: 'text-emerald-600 bg-emerald-50', icon: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v5m0 8v5"/>' },
+        { name: 'Compiler Design', full: 'Compiler Design', category: 'core', topics: 10, mcqs: 360, weightage: 'Medium', color: 'text-violet-600 bg-violet-50', icon: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="m9 9-3 3 3 3m6-6 3 3-3 3"/>' },
+        { name: 'COA', full: 'Computer Org. & Arch.', category: 'systems', topics: 14, mcqs: 510, weightage: 'High Weightage', color: 'text-amber-600 bg-amber-50', icon: '<rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 1v5m6-5v5M9 18v5m6-5v5M1 9h5m-5 6h5m12-6h5m-5 6h5"/>' },
+        { name: 'Operating Systems', full: 'Operating Systems', category: 'systems', topics: 15, mcqs: 640, weightage: 'High Weightage', color: 'text-cyan-600 bg-cyan-50', icon: '<rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>' },
+        { name: 'DBMS', full: 'Database Management', category: 'systems', topics: 14, mcqs: 590, weightage: 'High Weightage', color: 'text-pink-600 bg-pink-50', icon: '<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/>' },
+        { name: 'DCN', full: 'Computer Networks', category: 'systems', topics: 13, mcqs: 540, weightage: 'High Weightage', color: 'text-indigo-600 bg-indigo-50', icon: '<path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5M3 16l9 5 9-5"/>' },
+        { name: 'Discrete Maths', full: 'Discrete Mathematics', category: 'maths', topics: 11, mcqs: 490, weightage: 'High Weightage', color: 'text-teal-600 bg-teal-50', icon: '<path d="M4 19 19 4"/><rect x="4" y="4" width="5" height="5" rx="1"/><rect x="15" y="15" width="5" height="5" rx="1"/>' },
+        { name: 'Engineering Maths', full: 'Linear Algebra & Calculus', category: 'maths', topics: 9, mcqs: 410, weightage: 'Medium', color: 'text-orange-600 bg-orange-50', icon: '<path d="M18 4H6l6 8-6 8h12"/>' },
+        { name: 'Probability & Statistics', full: 'Probability & Statistics', category: 'maths', topics: 8, mcqs: 320, weightage: 'Medium', color: 'text-rose-600 bg-rose-50', icon: '<path d="M3 3v18h18"/><path d="m7 15 4-4 3 2 6-7"/>' }
+      ];
+
+      const subjectsGrid = document.getElementById('subjectsGrid');
+
+      function renderSubjects(filter = 'all') {
+        const filtered = filter === 'all' ? subjectsData : subjectsData.filter(s => s.category === filter);
+        subjectsGrid.innerHTML = '';
+
+        filtered.forEach(sub => {
+          const card = document.createElement('button');
+          card.type = 'button';
+          card.className = 'text-left group bg-slate-50/70 hover:bg-white rounded-2xl p-5 border border-slate-200/90 hover:border-brand-300 shadow-xs hover:shadow-card-hover transition-all flex flex-col justify-between';
+          card.innerHTML = `
+            <div>
+              <div class="flex items-start justify-between gap-2 mb-3.5">
+                <span class="w-10 h-10 rounded-xl ${sub.color} flex items-center justify-center">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${sub.icon}</svg>
+                </span>
+                <span class="px-2 py-0.5 rounded-md bg-white border border-slate-200 text-[10px] font-bold text-slate-600">${sub.weightage}</span>
+              </div>
+              <h3 class="font-display font-bold text-base text-navy-950 group-hover:text-brand-600 transition-colors">${sub.name}</h3>
+              <p class="text-xs text-slate-500 mt-0.5">${sub.full}</p>
+            </div>
+            <div class="flex items-center justify-between mt-4 pt-3 border-t border-slate-200/70 text-xs font-mono text-slate-600">
+              <span>${sub.topics} Topics</span>
+              <span class="font-semibold text-brand-600">${sub.mcqs} MCQs</span>
+            </div>
+          `;
+          card.addEventListener('click', () => {
+            notify(`Opened ${sub.name} — ${sub.topics} topics & ${sub.mcqs} practice MCQs ready.`);
+          });
+          subjectsGrid.appendChild(card);
+        });
+      }
+
+      document.querySelectorAll('.subject-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          document.querySelectorAll('.subject-tab').forEach(t => {
+            t.classList.remove('bg-white', 'text-brand-600', 'shadow-xs');
+            t.classList.add('text-slate-600');
+          });
+          tab.classList.add('bg-white', 'text-brand-600', 'shadow-xs');
+          tab.classList.remove('text-slate-600');
+          renderSubjects(tab.dataset.subjectFilter);
+        });
+      });
+
+      renderSubjects('all');
+
+      // ===================================================================
+      // 5. POPULAR MOCK TESTS (FILTERABLE + PREVIEW MODAL)
+      // ===================================================================
+      const mockTestsData = [
+        { title: 'GATE CSE — Full Length Mock Test 01', exam: 'GATE', duration: '180 Mins', questions: '65 Qs', difficulty: 'Exam Level' },
+        { title: 'BPSC Lecturer — DSA & Algorithms Subject Test', exam: 'BPSC', duration: '60 Mins', questions: '50 Qs', difficulty: 'Moderate' },
+        { title: 'BPSC PGT — Complete Computer Science Mock 01', exam: 'BPSC', duration: '120 Mins', questions: '80 Qs', difficulty: 'Exam Level' },
+        { title: 'GATE CSE — Operating Systems & DBMS Combined', exam: 'GATE', duration: '90 Mins', questions: '45 Qs', difficulty: 'Hard' },
+        { title: 'BPSC TGT — Computer Fundamentals & Networks', exam: 'BPSC', duration: '90 Mins', questions: '80 Qs', difficulty: 'Moderate' }
+      ];
+
+      const mockTestsList = document.getElementById('mockTestsList');
+      const testModal = document.getElementById('testModal');
+
+      function openTestModal(test) {
+        document.getElementById('tmBadge').textContent = test.exam === 'GATE' ? 'GATE CSE' : 'BPSC CSE';
+        document.getElementById('tmTitle').textContent = test.title;
+        document.getElementById('tmDuration').textContent = test.duration;
+        document.getElementById('tmQuestions').textContent = test.questions;
+        document.getElementById('tmDifficulty').textContent = test.difficulty;
+        testModal.classList.remove('hidden');
+      }
+
+      function closeTestModal() {
+        testModal.classList.add('hidden');
+      }
+
+      document.getElementById('closeTestModal').addEventListener('click', closeTestModal);
+      document.getElementById('cancelTestBtn').addEventListener('click', closeTestModal);
+      testModal.addEventListener('click', (e) => { if (e.target === testModal) closeTestModal(); });
+      document.getElementById('launchTestBtn').addEventListener('click', () => {
+        closeTestModal();
+        notify('Test engine preview ready — login to save your mock test attempt.');
+      });
+
+      function renderMockTests(filter = 'all') {
+        const filtered = filter === 'all' ? mockTestsData : mockTestsData.filter(t => t.exam === filter);
+        mockTestsList.innerHTML = '';
+
+        filtered.forEach(test => {
+          const row = document.createElement('div');
+          row.className = 'p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-50/80 transition-colors';
+          row.innerHTML = `
+            <div class="space-y-1.5">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-bold ${test.exam === 'GATE' ? 'bg-blue-50 text-blue-700' : 'bg-violet-50 text-violet-700'}">${test.exam}</span>
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-amber-50 text-amber-700">${test.difficulty}</span>
+              </div>
+              <h3 class="font-semibold text-sm sm:text-[15px] text-navy-950">${test.title}</h3>
+              <div class="flex items-center gap-4 text-xs text-slate-500 font-mono">
+                <span>${test.duration}</span>
+                <span>•</span>
+                <span>${test.questions}</span>
+              </div>
+            </div>
+            <button type="button" class="take-test-btn inline-flex items-center justify-center px-4 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-xs sm:text-sm font-semibold shadow-xs transition-colors shrink-0">
+              Take Test
+            </button>
+          `;
+          row.querySelector('.take-test-btn').addEventListener('click', () => openTestModal(test));
+          mockTestsList.appendChild(row);
+        });
+      }
+
+      document.querySelectorAll('.test-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          document.querySelectorAll('.test-tab').forEach(t => {
+            t.classList.remove('bg-white', 'text-brand-600', 'shadow-xs');
+            t.classList.add('text-slate-600');
+          });
+          tab.classList.add('bg-white', 'text-brand-600', 'shadow-xs');
+          tab.classList.remove('text-slate-600');
+          renderMockTests(tab.dataset.testFilter);
+        });
+      });
+
+      renderMockTests('all');
+
+      // ===================================================================
+      // 6. COMMAND SEARCH MODAL (Cmd/Ctrl + K)
+      // ===================================================================
+      const searchModal = document.getElementById('searchModal');
+      const commandSearchInput = document.getElementById('commandSearchInput');
+      const searchResultsList = document.getElementById('searchResultsList');
+
+      const searchCatalog = [
+        { type: 'Exam', title: 'GATE CSE (National Level)', href: '#exams' },
+        { type: 'Exam', title: 'BPSC Polytechnic Lecturer (CSE)', href: '#exams' },
+        { type: 'Exam', title: 'BPSC PGT (+2 Computer Teacher)', href: '#exams' },
+        { type: 'Exam', title: 'BPSC TGT (Secondary Computer Teacher)', href: '#exams' },
+        ...subjectsData.map(s => ({ type: 'Subject', title: `${s.name} — ${s.full}`, href: '#subjects' })),
+        ...mockTestsData.map(t => ({ type: 'Mock Test', title: t.title, href: '#tests' })),
+        { type: 'Notes', title: 'Formula & Complexity Cheat Sheets', href: '#resources' },
+        { type: 'Notes', title: 'Solved Previous Year Papers (PYQs)', href: '#resources' }
+      ];
+
+      function renderSearchResults(query = '') {
+        const q = query.trim().toLowerCase();
+        const matches = q ? searchCatalog.filter(item => item.title.toLowerCase().includes(q) || item.type.toLowerCase().includes(q)) : searchCatalog.slice(0, 8);
+
+        searchResultsList.innerHTML = '';
+        if (matches.length === 0) {
+          searchResultsList.innerHTML = `<div class="p-6 text-center text-sm text-slate-500">No matches found for "${query}".</div>`;
+          return;
+        }
+
+        matches.forEach(item => {
+          const a = document.createElement('a');
+          a.href = item.href;
+          a.className = 'flex items-center justify-between px-3.5 py-3 rounded-xl hover:bg-slate-50 transition-colors';
+          a.innerHTML = `
+            <span class="text-sm font-medium text-slate-800">${item.title}</span>
+            <span class="px-2 py-0.5 rounded-md bg-slate-100 text-[11px] font-bold text-slate-600 shrink-0 ml-2">${item.type}</span>
+          `;
+          a.addEventListener('click', () => {
+            closeSearchModal();
+            notify(`Navigated to ${item.title}`);
+          });
+          searchResultsList.appendChild(a);
+        });
+      }
+
+      function openSearchModal() {
+        searchModal.classList.remove('hidden');
+        commandSearchInput.value = '';
+        renderSearchResults('');
+        setTimeout(() => commandSearchInput.focus(), 50);
+      }
+
+      function closeSearchModal() {
+        searchModal.classList.add('hidden');
+      }
+
+      document.getElementById('openSearchBtn').addEventListener('click', openSearchModal);
+      document.getElementById('closeSearchBtn').addEventListener('click', closeSearchModal);
+      searchModal.addEventListener('click', (e) => { if (e.target === searchModal) closeSearchModal(); });
+      commandSearchInput.addEventListener('input', (e) => renderSearchResults(e.target.value));
+
+      // ===================================================================
+      // 7. AUTHENTICATION MODALS (Login, Phone OTP, Recovery, Sign Up)
+      // ===================================================================
+      const authModal = document.getElementById('authModal');
+      const authMain = document.getElementById('authMain');
+      const authRecovery = document.getElementById('authRecovery');
+      const signupView = document.getElementById('signupView');
+
+      function showAuthView(view) {
+        authMain.classList.toggle('hidden', view !== 'login');
+        authRecovery.classList.toggle('hidden', view !== 'recovery');
+        signupView.classList.toggle('hidden', view !== 'signup');
+      }
+
+      let authScrollY = 0;
+      let authBodyStyles = null;
+
+      function openAuthModal(mode = 'login') {
+        closeMobileMenu();
+        showAuthView(mode);
+        if (mode === 'login') setLoginTab('username');
+        if (authModal.classList.contains('hidden')) {
+          authScrollY = window.scrollY || window.pageYOffset || 0;
+          authBodyStyles = {
+            position: document.body.style.position,
+            top: document.body.style.top,
+            left: document.body.style.left,
+            right: document.body.style.right,
+            width: document.body.style.width,
+            overflow: document.body.style.overflow
+          };
+          document.body.style.position = 'fixed';
+          document.body.style.top = `-${authScrollY}px`;
+          document.body.style.left = '0';
+          document.body.style.right = '0';
+          document.body.style.width = '100%';
+          document.body.style.overflow = 'hidden';
+        }
+        authModal.classList.remove('hidden');
+      }
+
+      function closeAuthModal() {
+        if (authModal.classList.contains('hidden')) return;
+        authModal.classList.add('hidden');
+        if (authBodyStyles) {
+          Object.assign(document.body.style, authBodyStyles);
+          authBodyStyles = null;
+          window.scrollTo(0, authScrollY);
+        }
+      }
+
+      function setLoginTab(tab) {
+        document.querySelectorAll('.login-tab').forEach(btn => {
+          const active = btn.dataset.loginTab === tab;
+          btn.classList.toggle('bg-white', active);
+          btn.classList.toggle('text-brand-600', active);
+          btn.classList.toggle('shadow-xs', active);
+          btn.classList.toggle('text-slate-600', !active);
+        });
+        document.getElementById('usernameLogin').classList.toggle('hidden', tab !== 'username');
+        document.getElementById('phoneLogin').classList.toggle('hidden', tab !== 'phone');
+      }
+
+      document.querySelectorAll('[data-modal]').forEach(el => {
+        el.addEventListener('click', (e) => {
+          e.preventDefault();
+          openAuthModal(el.dataset.modal === 'signup' ? 'signup' : 'login');
+        });
+      });
+
+      document.getElementById('closeAuthModal').addEventListener('click', closeAuthModal);
+
+      document.querySelectorAll('[data-login-tab]').forEach(btn => {
+        btn.addEventListener('click', () => setLoginTab(btn.dataset.loginTab));
+      });
+
+      document.querySelectorAll('[data-toggle-password]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const input = document.getElementById(btn.dataset.togglePassword);
+          const isPwd = input.type === 'password';
+          input.type = isPwd ? 'text' : 'password';
+          btn.textContent = isPwd ? 'Hide' : 'Show';
+        });
+      });
+
+      document.querySelectorAll('[data-auth-view]').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const isPwd = link.dataset.authView === 'forgot-password';
+          document.getElementById('recoveryTitle').textContent = isPwd ? 'Reset your password' : 'Recover your username';
+          document.getElementById('recoveryDesc').textContent = isPwd
+            ? 'Enter the email address or phone number registered with your account.'
+            : 'Enter your registered email or phone number to retrieve your username.';
+          document.getElementById('recoverySubmit').textContent = isPwd ? 'Send Reset Link / OTP' : 'Recover Username';
+          document.getElementById('recoveryForm').dataset.recoveryType = link.dataset.authView;
+          showAuthView('recovery');
+        });
+      });
+
+      document.getElementById('backToLogin').addEventListener('click', () => showAuthView('login'));
+      document.getElementById('switchSignup').addEventListener('click', (e) => { e.preventDefault(); showAuthView('signup'); });
+      document.getElementById('switchLogin').addEventListener('click', (e) => { e.preventDefault(); showAuthView('login'); });
+
+      // Password Strength & Match Validation
+      const signupPassword = document.getElementById('signupPassword');
+      const signupConfirmPassword = document.getElementById('signupConfirmPassword');
+      const strengthBar = document.getElementById('strengthBar');
+      const strengthLabel = document.getElementById('strengthLabel');
+      const matchHint = document.getElementById('passwordMatchHint');
+
+      signupPassword.addEventListener('input', () => {
+        const val = signupPassword.value;
+        let score = 0;
+        if (val.length >= 8) score++;
+        if (/[A-Z]/.test(val) && /[a-z]/.test(val)) score++;
+        if (/[0-9]/.test(val)) score++;
+        if (/[^A-Za-z0-9]/.test(val)) score++;
+
+        const widths = ['0%', '25%', '50%', '75%', '100%'];
+        const colors = ['bg-slate-200', 'bg-rose-500', 'bg-amber-500', 'bg-emerald-500', 'bg-emerald-600'];
+        const labels = ['Use 8+ chars with letters & numbers', 'Weak password', 'Fair password', 'Strong password', 'Very strong password'];
+
+        strengthBar.style.width = widths[score];
+        strengthBar.className = `h-full transition-all duration-200 ${colors[score]}`;
+        strengthLabel.textContent = labels[score];
+      });
+
+      signupConfirmPassword.addEventListener('input', () => {
+        const match = signupConfirmPassword.value === signupPassword.value && signupConfirmPassword.value.length > 0;
+        matchHint.textContent = match ? '✓ Passwords match.' : 'Passwords do not match.';
+        matchHint.className = match ? 'text-[11px] font-semibold text-emerald-600 mt-1.5' : 'text-[11px] font-semibold text-rose-600 mt-1.5';
+      });
+
+      // Form Submit Handlers
+      document.getElementById('usernameLogin').addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        notify('Login UI ready — connect your authentication backend to verify credentials.');
+      });
+
+      document.getElementById('phoneLogin').addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        notify('OTP flow ready — connect Firebase Phone Auth to send SMS OTP.');
+      });
+
+      document.getElementById('recoveryForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const type = e.currentTarget.dataset.recoveryType === 'forgot-password' ? 'Password reset' : 'Username recovery';
+        
+        notify(`${type} requested — connect your backend to complete recovery.`);
+      });
+
+      document.getElementById('signupForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (signupPassword.value !== signupConfirmPassword.value) {
+          matchHint.textContent = 'Passwords do not match.';
+          matchHint.className = 'text-[11px] font-semibold text-rose-600 mt-1.5';
+          signupConfirmPassword.focus();
+          return;
+        }
+        
+        notify('Student registration ready — connect Firebase Auth & database to create account.');
+      });
+
+      document.getElementById('googleLogin').addEventListener('click', () => notify('Google Login selected — connect Google OAuth provider.'));
+      document.getElementById('googleSignup').addEventListener('click', () => notify('Google Sign-Up selected — connect Google OAuth provider.'));
+
+      // ===================================================================
+      // 8. GLOBAL KEYBOARD SHORTCUTS (Cmd/Ctrl + K & Escape)
+      // ===================================================================
+      document.addEventListener('keydown', (e) => {
+        if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+          e.preventDefault();
+          if (searchModal.classList.contains('hidden')) openSearchModal();
+          else closeSearchModal();
+        } else if (e.key === 'Escape') {
+          closeSearchModal();
+          closeTestModal();
+          closeMobileMenu();
+          closeDesktopDropdowns();
+        }
+      });
+    })();
+  </script>
+</body>
 </html>
